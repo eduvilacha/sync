@@ -93,39 +93,31 @@ const MainPage = () => {
       <div className="w-full flex justify-center">
         <h1 className="font-bold text-center mb-2">¡Hola, {userName}!</h1>
       </div>
+
       <div className="flex h-[50%] justify-evenly items-center">
-        <a href="/test" className="group" style={{ width: "20%" }}>
+        <Link to="/test" className="group" style={{ width: "20%" }}>
           <div className="bg-blue-500 text-white rounded-full flex flex-col items-center justify-center w-full h-[120px] transition-transform hover:scale-105">
-            <img
-              src={imgTest}
-              alt="Test"
-              className="w-[100%] m-4 transition-transform group-hover:scale-110 object-contain"
-            />
+            <img src={imgTest} alt="Test" className="w-[100%] m-4 transition-transform group-hover:scale-110 object-contain" />
             <p className="textoOpciones text-center">Test</p>
           </div>
-        </a>
-        <a href="/compatibilidad" className="group" style={{ width: "20%" }}>
+        </Link>
+
+        <Link to="/compatibilidad" className="group" style={{ width: "20%" }}>
           <div className="bg-green-500 text-white rounded-full flex flex-col items-center justify-center w-full h-[120px] transition-transform hover:scale-105">
-            <img
-              src={imgCompatibilidad}
-              alt="Compatibilidad"
-              className="w-[100%] mb-2 transition-transform group-hover:scale-110 object-contain"
-            />
+            <img src={imgCompatibilidad} alt="Compatibilidad" className="w-[100%] mb-2 transition-transform group-hover:scale-110 object-contain" />
             <p className="textoOpciones text-center">Compatibilidad</p>
           </div>
-        </a>
-        <a href="/perfil" className="group" style={{ width: "20%" }}>
+        </Link>
+
+        <Link to="/perfil" className="group" style={{ width: "20%" }}>
           <div className="bg-orange-500 text-white rounded-full flex flex-col items-center justify-center w-full h-[120px] transition-transform hover:scale-105">
-            <img
-              src={imgPerfil}
-              alt="Perfil"
-              className="w-[100%] mb-2 transition-transform group-hover:scale-110 object-contain"
-            />
-            <p className="textoOpciones no-underline text-center">Perfil</p>
+            <img src={imgPerfil} alt="Perfil" className="w-[100%] mb-2 transition-transform group-hover:scale-110 object-contain" />
+            <p className="textoOpciones text-center">Perfil</p>
           </div>
-        </a>
+        </Link>
       </div>
-      <div
+
+     <div
         className="absolute bottom-0 left-0 w-full h-full bg-no-repeat bg-bottom bg-cover z-[-1]"
         style={{
           backgroundImage: `url(${imgFondoBajo})`,
