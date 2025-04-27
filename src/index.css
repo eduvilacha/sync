@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* -- -- -- -- -- HOME LOGIN REGISTRO -- -- -- -- -- -- */
+.home h1,
+.login h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 6rem;
+}
+.home .boton,
+.login .boton{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: black;
+    text-decoration: none;
+}
+.home-background,
+.login-background {
+    background-image: url('/src/img/sync_home_fondo.png');
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+
+.login .input{
+  font-family: 'Roboto', sans-serif;
+  border: 2px solid #ddd;
+  outline: none;
+}
+.login .link-registrate{
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+
+
+/* -- -- -- -- -- P.PRINCIPAL -- -- -- -- -- -- */
+.pagina-principal h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 5rem;
+}
+.pagina-principal a{
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
+}
+
+
+
+
+@media (max-width: 1390px){
+  /* -- -- -- -- -- HOME -- -- -- -- -- -- */
+  .home-background,
+  .login-background {
+      background-image: url('/src/img/sync_home_fondo2.png');
+  }
+
+}
+  
+@media (max-width: 1160px){
+  /* -- -- -- -- -- HOME -- -- -- -- -- -- */
+  .home h1,
+  .login h1{
+    font-size: 5rem;
+  }
+
+}
+
+@media (max-width: 1000px){
+  /* -- -- -- -- -- HOME -- -- -- -- -- -- */
+  .home h1{
+      font-size: 4rem;
+  }
+
+  .login h1{
+    font-size: 3.5rem;
+}
+}
+  
+@media (max-width: 795px) {
+  /* -- -- -- -- -- HOME -- -- -- -- -- -- */
+  .home-background,
+  .login-background {
+    background-image: url('/src/img/sync_home_fondo3.png');
+    background-position: center;
+    background-size: cover;
+  }
+
+}
+@media (max-width: 600px) {
+  /* -- -- -- -- -- HOME -- -- -- -- -- -- */
+  .home-background,
+  .login-background {
+    background-image: none;
+  }
+  .home h1,
+  .login h1{
+    font-size: 3rem;
+  }
+  .home .botones{
+    width: 100%;
+    justify-content: center;
+  }
+  .home .boton{
+    width: 90%;
+  }
+
+  .login .formulario{
+    width: 100%;
+    justify-content: center;
+  }
+  .login .input, .boton, .formulario a{
+    width: 90%;
+  }
+  .login .login-text{
+    width: 90%;
+  }
+}
