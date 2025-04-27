@@ -32,9 +32,12 @@ const Login = () => {
       console.log("Respuesta de /login:", data);
 
       if (res.ok && data.success) {
-        console.log("Login exitoso, verificando autenticación antes de redirigir");
-
-        // Nuevo: Verificar la sesión inmediatamente después del login
+        console.log("Login exitoso, esperando para verificar sesión...");
+      
+        // 🔥 AÑADIR: Esperar 300ms para que el navegador guarde bien la cookie
+        await new Promise(resolve => setTimeout(resolve, 300));
+      
+        // 🔥 Luego hacer la verificación
         const authCheck = await fetch("https://servidor-sync.onrender.com/check-auth", {
           method: "GET",
           credentials: "include",
@@ -42,6 +45,7 @@ const Login = () => {
         const authData = await authCheck.json();
         console.log("Respuesta de /check-auth después de login:", authData);
 
+        
         if (authData.isAuthenticated) {
           console.log("Sesión verificada, redirigiendo a /principal");
           navigate("/principal");
