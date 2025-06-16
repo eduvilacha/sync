@@ -1,131 +1,255 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import logo from "../img/sync_logo.png";
-import imgPerfil from "../img/sync_perfil.png";
-import imgTest from "../img/sync_test.png";
-import imgCompatibilidad from "../img/sync_comparativa.png";
-import imgFondoBajo from "../img/sync_fondo_paginas.png";
+import express from 'express';
+import session from 'express-session';
+import mongoose from 'mongoose';
+import MongoStore from 'connect-mongo';
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import cors from 'cors';
 
-const MainPage = () => {
-  const navigate = useNavigate();
-  const [userName, setUserName] = useState("");
-  const [error, setError] = useState("");
+// Importar modelos
+import Pregunta from './models/Preguntas.js';
+import User from './models/User.js';
+import Test from './models/Test.js';
+import Like from './models/Like.js';
 
-  const handleLogout = async () => {
-    try {
-      const response = await fetch('https://servidor-sync.onrender.com/logout', {
-        method: 'GET',
-        credentials: 'include',
-      });
+// Configuración inicial
+dotenv.config();
+console.log("NODE_ENV:", process.env.NODE_ENV);
+import cookieParser from 'cookie-parser';
+app.use(cookieParser());
 
-      if (response.ok) {
-        navigate('/login');
-      } else {
-        console.error('Error al cerrar sesión:', response.statusText);
-        setError('No se pudo cerrar sesión. Intenta de nuevo.');
-      }
-    } catch (error) {
-      console.error('Error en la solicitud de logout:', error);
-      setError('Error en la solicitud. Verifica tu conexión.');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+app.set('trust proxy', 1);
+
+// Conectar a MongoDB
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('Conectado a MongoDB'))
+  .catch((err) => console.error('Error al conectar a MongoDB:', err));
+
+// Instancia de MongoStore
+const mongoStore = MongoStore.create({
+  mongoUrl: process.env.MONGO_URI,
+  ttl: 24 * 60 * 60,
+  autoRemove: 'native'
+});
+
+// Configuración de CORS
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://syncronizados.netlify.app"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS: origen no permitido'));
     }
-  };
+  },
+  credentials: true,
+}));
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const res = await fetch("https://servidor-sync.onrender.com/check-auth", {
-          method: "GET",
-          credentials: "include",
-        });
-        const data = await res.json();
+// Configuración de Express
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-        if (!data.isAuthenticated) {
-          setError("Sesión no válida. Redirigiendo al login...");
-          setTimeout(() => navigate("/login"), 2000);
-        } else {
-          setUserName(data.userName);
-        }
-      } catch (error) {
-        console.error("Error al verificar autenticación:", error);
-        setError("Error al verificar autenticación. Redirigiendo al login...");
-        setTimeout(() => navigate("/login"), 2000);
+// Configuración de la sesión
+app.use(session({
+  secret: process.env.SESSION_SECRET || '123abc',
+  resave: false,
+  saveUninitialized: false,
+  store: mongoStore,
+  cookie: {
+    secure: true,
+    sameSite: 'None',
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000,
+    path: '/'
+  }
+}));
+
+// Middleware para debug de sesión
+app.use((req, res, next) => {
+  console.log(`[${req.method} ${req.path}] SessionID:`, req.sessionID);
+  console.log(`[${req.method} ${req.path}] Session:`, req.session);
+  next();
+});
+
+// ------------------------ RUTAS API ------------------------
+
+// Ruta Home
+app.get("/", (req, res) => {
+  res.send("API de Syncronizados");
+});
+
+// Ruta de login (POST)
+app.post("/login", async (req, res) => {
+  const { nombre, contrasena } = req.body;
+  try {
+    const user = await User.findOne({ nombre });
+    if (!user || user.contrasena !== contrasena) {
+      console.log("Login fallido");
+      return res.status(401).json({ success: false, message: "Usuario o contraseña incorrectos" });
+    }
+    req.session.usuario = { _id: user._id, nombre: user.nombre };
+    req.session.save((err) => {
+      if (err) {
+        console.error("Error guardando sesión:", err);
+        return res.status(500).json({ success: false, message: "Error al guardar sesión" });
       }
-    };
+      res.setHeader('Access-Control-Allow-Origin', 'https://syncronizados.netlify.app');
+      res.setHeader('Access-Control-Allow-Credentials', 'true');
+      res.status(200).json({ success: true });
+    });
+  } catch (err) {
+    console.error("Error en login:", err);
+    res.status(500).json({ success: false, message: "Error en el servidor" });
+  }
+});
 
-    checkAuth();
-  }, [navigate]);
+// Ruta para logout (GET)
+app.get("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error al destruir sesión:", err);
+      return res.status(500).json({ success: false, message: "Error al cerrar sesión" });
+    }
+    res.clearCookie('connect.sid', {
+      path: '/',
+      httpOnly: true,
+      sameSite: 'None',
+      secure: true,
+    });
+    res.status(200).json({ success: true, message: "Sesión cerrada" });
+  });
+});
 
-  return (
-    <div className="pagina-principal h-screen overflow-hidden relative p-0 m-0">
-      {/* Botón de cerrar sesión */}
-      <button
-        style={{ position: 'absolute', top: '25px', right: '50px' }}
-        className="py-[10px] px-[20px] text-[#ffffff] bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-10"
-        onClick={handleLogout}
-      >
-        Cerrar sesión
-      </button>
+// Ruta de registro (POST)
+app.post("/register", async (req, res) => {
+  const { nombre, edad, genero, provincia, contrasena } = req.body;
+  try {
+    const existingUser = await User.findOne({ nombre });
+    if (existingUser) {
+      return res.status(400).json({ success: false, message: "Este nombre de usuario ya está en uso." });
+    }
+    const newUser = new User({ nombre, edad, genero, provincia, contrasena });
+    await newUser.save();
+    res.status(201).json({ success: true, message: "Usuario registrado correctamente" });
+  } catch (err) {
+    console.error("Error en registro:", err);
+    res.status(500).json({ success: false, message: "Error al registrar usuario" });
+  }
+});
 
-      <div className="w-full flex ml-[5%]">
-        <img 
-          src={logo} 
-          alt="Logo" 
-          className="max-w-[150px] h-auto" 
-        />
-      </div>
+// Ruta para verificar autenticación
+app.get("/check-auth", async (req, res) => {
 
-      <div className="w-full flex justify-center">
-        <h1 className="font-bold text-center mb-2">¡Hola, {userName}!</h1>
-      </div>
+  res.setHeader('Access-Control-Allow-Origin', 'https://syncronizados.netlify.app');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
 
-      {error && <p className="text-red-500 text-center mt-2">{error}</p>}
+  if (req.session.usuario) {
+    return res.json({
+      isAuthenticated: true,
+      userName: req.session.usuario.nombre,
+    });
+  } else {
+    return res.json({ isAuthenticated: false });
+  }
+});
 
-      <div className="flex h-[50%] justify-evenly items-center">
-        <a href="/test" className="group" style={{ width: '20%' }}>
-          <div className="bg-blue-500 text-white rounded-full flex flex-col items-center justify-center w-full h-[120px] transition-transform hover:scale-105">
-            <img 
-              src={imgTest} 
-              alt="Test" 
-              className="w-[100%] m-4 transition-transform group-hover:scale-110 object-contain" 
-            />
-            <p className="textoOpciones text-center">Test</p>
-          </div>
-        </a>
 
-        <a href="/top5" className="group" style={{ width: '20%' }}>
-          <div className="bg-green-500 text-white rounded-full flex flex-col items-center justify-center w-full h-[120px] transition-transform hover:scale-105">
-            <img 
-              src={imgCompatibilidad} 
-              alt="Compatibilidad" 
-              className="w-[100%] mb-2 transition-transform group-hover:scale-110 object-contain" 
-            />
-            <p className="textoOpciones text-center">Compatibilidad</p>
-          </div>
-        </a>
+// Ruta para obtener perfil (GET)
+app.get("/perfil", async (req, res) => {
+  if (!req.session.usuario) {
+    return res.status(401).json({ success: false, message: "No autorizado" });
+  }
+  try {
+    const usuario = await User.findById(req.session.usuario._id);
+    res.json({
+      success: true,
+      nombre: usuario.nombre,
+      edad: usuario.edad,
+      genero: usuario.genero,
+      provincia: usuario.provincia,
+    });
+  } catch (err) {
+    console.error("Error perfil:", err);
+    res.status(500).json({ success: false, message: "Error al cargar perfil" });
+  }
+});
 
-        <a href="/perfil" className="group" style={{ width: '20%' }}>
-          <div className="bg-orange-500 text-white rounded-full flex flex-col items-center justify-center w-full h-[120px] transition-transform hover:scale-105">
-            <img 
-              src={imgPerfil} 
-              alt="Perfil" 
-              className="w-[100%] mb-2 transition-transform group-hover:scale-110 object-contain" 
-            />
-            <p className="textoOpciones no-underline text-center">Perfil</p>
-          </div>
-        </a>
-      </div>
+// Ruta para actualizar perfil (POST)
+app.post("/perfil", async (req, res) => {
+  if (!req.session.usuario) {
+    return res.status(401).json({ success: false, message: "No autorizado" });
+  }
+  const { provincia, contrasena } = req.body;
+  try {
+    const usuario = await User.findById(req.session.usuario._id);
+    if (provincia) usuario.provincia = provincia;
+    if (contrasena) usuario.contrasena = contrasena;
+    await usuario.save();
+    res.json({ success: true, message: "Perfil actualizado" });
+  } catch (err) {
+    console.error("Error actualizar perfil:", err);
+    res.status(500).json({ success: false, message: "Error al actualizar perfil" });
+  }
+});
 
-      <div
-        className="absolute bottom-0 left-0 w-full h-full bg-no-repeat bg-bottom bg-cover z-[-1]"
-        style={{
-          backgroundImage: `url(${imgFondoBajo})`,
-          backgroundPosition: 'bottom',
-          backgroundAttachment: "fixed",
-        }}
-      />
-    </div>
-  );
-};
+// Ruta para top5 de compatibilidad
+app.get("/top5", async (req, res) => {
+  if (!req.session.usuario) {
+    return res.status(401).send("No autorizado");
+  }
+  try {
+    const miTest = await Test.findOne({ usuario: req.session.usuario._id });
+    if (!miTest) {
+      return res.send("No has hecho el test aún.");
+    }
+    const otrosTests = await Test.find({ usuario: { $ne: req.session.usuario._id } }).populate("usuario");
+    const compatibilidades = otrosTests.map(test => {
+      const coincidencias = test.respuestas.filter((r, i) => r === miTest.respuestas[i]).length;
+      const porcentaje = Math.round((coincidencias / miTest.respuestas.length) * 100);
+      return { usuario: test.usuario, porcentaje };
+    }).sort((a, b) => b.porcentaje - a.porcentaje).slice(0, 5);
+    res.json(compatibilidades);
+  } catch (error) {
+    console.error("Error top5:", error);
+    res.status(500).send("Error en top5");
+  }
+});
 
-export default MainPage;
-  
+// Ruta para dar like
+app.post("/like", async (req, res) => {
+  if (!req.session.usuario) return res.status(401).send("No autorizado");
+  const { targetUserId } = req.body;
+  try {
+    let like = await Like.findOne({ de: req.session.usuario._id, para: targetUserId });
+    if (!like) {
+      like = new Like({ de: req.session.usuario._id, para: targetUserId });
+      await like.save();
+    }
+    const reciprocal = await Like.findOne({ de: targetUserId, para: req.session.usuario._id });
+    if (reciprocal) {
+      like.match = true;
+      reciprocal.match = true;
+      await like.save();
+      await reciprocal.save();
+    }
+    res.send("Like registrado");
+  } catch (err) {
+    console.error("Error al dar like:", err);
+    res.status(500).send("Error al dar like");
+  }
+});
+
+// Levantar servidor
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en puerto ${PORT}`);
+});

@@ -95,6 +95,7 @@ const MainPage = () => {
       </div>
 
       <div className="flex h-[50%] justify-evenly items-center">
+        
         <Link to="/test" className="group" style={{ width: "20%" }}>
           <div className="bg-blue-500 text-white rounded-full flex flex-col items-center justify-center w-full h-[120px] transition-transform hover:scale-105">
             <img src={imgTest} alt="Test" className="w-[100%] m-4 transition-transform group-hover:scale-110 object-contain" />

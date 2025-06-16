@@ -147,7 +147,7 @@ const Perfil = () => {
   }
 
   return (
-    <div className="pagina-principal h-screen overflow-hidden relative p-0 m-0">
+    <div className="pagina-perfil h-screen overflow-hidden relative p-0 m-0">
       {error && <p className="text-red-500 text-center mt-2">{error}</p>}
       <button
         style={{ position: "absolute", top: "25px", right: "50px" }}
@@ -163,7 +163,7 @@ const Perfil = () => {
         <h1 className="font-bold text-center mb-2">Tu perfil</h1>
       </div>
       <div className="flex flex-col items-center mt-8">
-        <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <div className="my-[50px] rounded-lg shadow-lg w-full max-w-md">
           <div className="mb-4">
             <p>
               <strong>Nombre:</strong> {user.nombre || "No disponible"}
