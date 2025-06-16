@@ -5,8 +5,9 @@ import imgPerfil from "../img/sync_perfil.png";
 import imgTest from "../img/sync_test.png";
 import imgCompatibilidad from "../img/sync_comparativa.png";
 import imgFondoBajo from "../img/sync_fondo_paginas.png";
+import Test from "./Test";
 
-const MainPage = () => {
+const Test = () => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [error, setError] = useState("");
@@ -129,4 +130,4 @@ const MainPage = () => {
   );
 };
 
-export default MainPage;
+export default Test;
