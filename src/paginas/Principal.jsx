@@ -7,7 +7,7 @@ import imgCompatibilidad from "../img/sync_comparativa.png";
 import imgFondoBajo from "../img/sync_fondo_paginas.png";
 import Test from "./Test";
 
-const Test = () => {
+const Principal = () => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [error, setError] = useState("");
@@ -130,4 +130,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default Principal;
