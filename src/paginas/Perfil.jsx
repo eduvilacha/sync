@@ -150,22 +150,19 @@ const Perfil = () => {
 
   
   return (
-    <div className="pagina-perfil min-h-screen overflow-y-auto relative bg-[#f2f2f2] p-0 m-0">
+    <div className="pagina-perfil min-h-screen relative bg-[#f2f2f2] p-0 m-0 overflow-hidden">
       {error && <p className="text-red-500 text-center mt-4">{error}</p>}
-      <div style={{ padding: "50px", backgroundColor: "yellow", fontSize: "24px" }}>
-    ESTO ES PERFIL
-  </div>
   
-      {/* Botón de cerrar sesión */}
+      {/* Botón cerrar sesión */}
       <button
-        className="absolute top-6 right-10 py-2 px-4 text-white bg-[#ff2d01] hover:bg-[#ff78e5] transition z-10"
+        className="absolute top-6 right-10 py-[10px] px-[20px] text-white bg-[#ff2d01] hover:bg-[#ff78e5] transition z-10"
         onClick={handleLogout}
       >
         Cerrar sesión
       </button>
   
-      {/* Logo que redirige a /principal */}
-      <div className="w-full flex justify-start ml-6 mt-4">
+      {/* Logo */}
+      <div className="w-full flex justify-start ml-6 mt-4 z-10 relative">
         <Link to="/principal">
           <img
             src={logo}
@@ -175,65 +172,59 @@ const Perfil = () => {
         </Link>
       </div>
   
-      {/* Caja principal con el contenido del perfil */}
-    
-      <div className="bg-white rounded-2xl shadow-xl p-10 w-full max-w-3xl mx-auto mt-12 font-['Roboto']">
-      <h1 className="text-4xl font-bold text-center mb-8">Tu perfil</h1>
-      <div className="bg-red-500 text-white p-4 text-2xl">
-  PROBANDO ESTILOS TAILWIND
-</div>
-
-
-      <div className="mb-6 text-xl">
-        <p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p>
-        <p><strong>Edad:</strong> {user.edad || "No disponible"}</p>
-        <p><strong>Género:</strong> {user.genero || "No disponible"}</p>
-      </div>
-
-      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-        <div>
-          <label htmlFor="provincia" className="block text-lg mb-1 font-semibold">
-            Provincia:
-          </label>
-          <select
-            name="provincia"
-            value={user.provincia}
-            onChange={(e) => setUser({ ...user, provincia: e.target.value })}
-            className="w-full border border-gray-300 p-2 rounded text-base"
-            required
+      {/* Contenedor principal */}
+      <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-10 w-full max-w-3xl mx-auto mt-20 font-['Roboto']">
+        <h1 className="text-4xl font-bold text-center mb-8">Tu perfil</h1>
+  
+        <div className="mb-6 text-xl">
+          <p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p>
+          <p><strong>Edad:</strong> {user.edad || "No disponible"}</p>
+          <p><strong>Género:</strong> {user.genero || "No disponible"}</p>
+        </div>
+  
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <div>
+            <label htmlFor="provincia" className="block text-lg mb-1 font-semibold">
+              Provincia:
+            </label>
+            <select
+              name="provincia"
+              value={user.provincia}
+              onChange={(e) => setUser({ ...user, provincia: e.target.value })}
+              className="w-[60%] border border-gray-300 p-1 rounded text-base"
+              required
+            >
+              {provincias.map((prov) => (
+                <option key={prov} value={prov}>{prov}</option>
+              ))}
+            </select>
+          </div>
+  
+          <div>
+            <label htmlFor="contrasena" className="block text-lg mb-1 font-semibold">
+              Nueva contraseña:
+            </label>
+            <input
+              type="password"
+              name="contrasena"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              className="w-[60%] border border-gray-300 p-1 rounded text-base"
+            />
+          </div>
+  
+          <button
+            type="submit"
+            className="bg-[#0395ff] hover:bg-[#0277cc] text-white font-semibold py-2 px-4 transition"
           >
-            {provincias.map((prov) => (
-              <option key={prov} value={prov}>{prov}</option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="contrasena" className="block text-lg mb-1 font-semibold">
-            Nueva contraseña:
-          </label>
-          <input
-            type="password"
-            name="contrasena"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded text-base"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="bg-[#0395ff] hover:bg-[#0277cc] text-white font-bold py-2 px-4 rounded-full transition"
-        >
-          Actualizar
-        </button>
-      </form>
-
-      <Link to="/principal" className="text-blue-500 hover:underline mt-6 block text-center text-lg">
-        Volver al inicio
-      </Link>
-    </div>
-
+            Actualizar
+          </button>
+        </form>
+  
+        <Link to="/principal" className="text-blue-500 hover:underline mt-6 block text-center text-lg">
+          Volver al inicio
+        </Link>
+      </div>
   
       {/* Fondo decorativo */}
       <div
