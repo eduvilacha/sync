@@ -172,60 +172,59 @@ const Perfil = () => {
       </div>
   
       {/* Caja principal con el contenido del perfil */}
-      <div className="perfil-box bg-white rounded-2xl shadow-lg p-10 w-full max-w-3xl mx-auto mt-12">
-        <h1 className="text-4xl font-bold text-center mb-8 font-['Roboto']">
-          Tu perfil
-        </h1>
-  
-        <div className="mb-6 text-xl font-['Roboto']">
-          <p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p>
-          <p><strong>Edad:</strong> {user.edad || "No disponible"}</p>
-          <p><strong>Género:</strong> {user.genero || "No disponible"}</p>
-        </div>
-  
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6 font-['Roboto']">
-          <div>
-            <label htmlFor="provincia" className="block text-lg mb-1 font-semibold">
-              Provincia:
-            </label>
-            <select
-              name="provincia"
-              value={user.provincia}
-              onChange={(e) => setUser({ ...user, provincia: e.target.value })}
-              className="w-full border border-gray-300 p-2 rounded text-base"
-              required
-            >
-              {provincias.map((prov) => (
-                <option key={prov} value={prov}>{prov}</option>
-              ))}
-            </select>
-          </div>
-  
-          <div>
-            <label htmlFor="contrasena" className="block text-lg mb-1 font-semibold">
-              Nueva contraseña:
-            </label>
-            <input
-              type="password"
-              name="contrasena"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              className="w-full border border-gray-300 p-2 rounded text-base"
-            />
-          </div>
-  
-          <button
-            type="submit"
-            className="bg-[#0395ff] hover:bg-[#0277cc] text-white font-bold py-2 px-4 rounded-full transition"
-          >
-            Actualizar
-          </button>
-        </form>
-  
-        <Link to="/principal" className="text-blue-500 hover:underline mt-6 block text-center text-lg">
-          Volver al inicio
-        </Link>
+      <div className="bg-white rounded-2xl shadow-xl p-10 w-full max-w-3xl mx-auto mt-12 font-['Roboto']">
+      <h1 className="text-4xl font-bold text-center mb-8">Tu perfil</h1>
+
+      <div className="mb-6 text-xl">
+        <p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p>
+        <p><strong>Edad:</strong> {user.edad || "No disponible"}</p>
+        <p><strong>Género:</strong> {user.genero || "No disponible"}</p>
       </div>
+
+      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <div>
+          <label htmlFor="provincia" className="block text-lg mb-1 font-semibold">
+            Provincia:
+          </label>
+          <select
+            name="provincia"
+            value={user.provincia}
+            onChange={(e) => setUser({ ...user, provincia: e.target.value })}
+            className="w-full border border-gray-300 p-2 rounded text-base"
+            required
+          >
+            {provincias.map((prov) => (
+              <option key={prov} value={prov}>{prov}</option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="contrasena" className="block text-lg mb-1 font-semibold">
+            Nueva contraseña:
+          </label>
+          <input
+            type="password"
+            name="contrasena"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            className="w-full border border-gray-300 p-2 rounded text-base"
+          />
+        </div>
+
+        <button
+          type="submit"
+          className="bg-[#0395ff] hover:bg-[#0277cc] text-white font-bold py-2 px-4 rounded-full transition"
+        >
+          Actualizar
+        </button>
+      </form>
+
+      <Link to="/principal" className="text-blue-500 hover:underline mt-6 block text-center text-lg">
+        Volver al inicio
+      </Link>
+    </div>
+
   
       {/* Fondo decorativo */}
       <div
