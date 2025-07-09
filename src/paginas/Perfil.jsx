@@ -146,83 +146,88 @@ const Perfil = () => {
     return <div>Cargando...</div>;
   }
 
+
+  
   return (
-    <div className="pagina-perfil h-screen overflow-hidden relative p-0 m-0">
-      {error && <p className="text-red-500 text-center mt-2">{error}</p>}
+    <div className="pagina-perfil min-h-screen overflow-y-auto relative bg-[#f2f2f2] p-0 m-0">
+      {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+  
+      {/* Botón de cerrar sesión */}
       <button
-        style={{ position: "absolute", top: "25px", right: "50px" }}
-        className="py-[10px] px-[20px] text-[#ffffff] bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-10"
+        className="absolute top-6 right-10 py-2 px-4 text-white bg-[#ff2d01] hover:bg-[#ff78e5] transition z-10"
         onClick={handleLogout}
       >
         Cerrar sesión
       </button>
-      <div className="w-full flex ml-[5%]">
-        <img src={logo} alt="Logo" className="max-w-[150px] h-auto" />
+  
+      {/* Logo que redirige a /principal */}
+      <div className="w-full flex justify-start ml-6 mt-4">
+        <Link to="/principal">
+          <img
+            src={logo}
+            alt="Logo"
+            className="w-[120px] h-auto cursor-pointer"
+          />
+        </Link>
       </div>
-      <div className="w-full flex justify-center">
-        <h1 className="font-bold text-center mb-2">Tu perfil</h1>
-      </div>
-      <div className="flex flex-col items-center mt-8">
-        <div className="my-[50px] rounded-lg shadow-lg w-full max-w-md">
-          <div className="mb-4">
-            <p>
-              <strong>Nombre:</strong> {user.nombre || "No disponible"}
-            </p>
-            <p>
-              <strong>Edad:</strong> {user.edad || "No disponible"}
-            </p>
-            <p>
-              <strong>Género:</strong> {user.genero || "No disponible"}
-            </p>
-          </div>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <div>
-              <label htmlFor="provincia" className="mr-2">
-                Provincia:
-              </label>
-              <select
-                name="provincia"
-                value={user.provincia}
-                onChange={(e) =>
-                  setUser({ ...user, provincia: e.target.value })
-                }
-                className="p-2 rounded w-full"
-                required
-              >
-                {provincias.map((prov) => (
-                  <option key={prov} value={prov}>
-                    {prov}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label htmlFor="contrasena" className="mr-2">
-                Nueva Contraseña:
-              </label>
-              <input
-                type="password"
-                name="contrasena"
-                value={newPassword}
-                onChange={(e) => setNewPassword(e.target.value)}
-                className="p-2 rounded w-full"
-              />
-            </div>
-            <button
-              type="submit"
-              className="py-[10px] px-[20px] text-[#ffffff] bg-[#0395ff] hover:bg-[#0277cc] rounded-full transition"
-            >
-              Actualizar
-            </button>
-          </form>
-          <Link
-            to="/principal"
-            className="text-blue-500 hover:underline mt-4 inline-block"
-          >
-            Volver al inicio
-          </Link>
+  
+      {/* Caja principal con el contenido del perfil */}
+      <div className="perfil-box bg-white rounded-2xl shadow-lg p-10 w-full max-w-3xl mx-auto mt-12">
+        <h1 className="text-4xl font-bold text-center mb-8 font-['Roboto']">
+          Tu perfil
+        </h1>
+  
+        <div className="mb-6 text-xl font-['Roboto']">
+          <p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p>
+          <p><strong>Edad:</strong> {user.edad || "No disponible"}</p>
+          <p><strong>Género:</strong> {user.genero || "No disponible"}</p>
         </div>
+  
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6 font-['Roboto']">
+          <div>
+            <label htmlFor="provincia" className="block text-lg mb-1 font-semibold">
+              Provincia:
+            </label>
+            <select
+              name="provincia"
+              value={user.provincia}
+              onChange={(e) => setUser({ ...user, provincia: e.target.value })}
+              className="w-full border border-gray-300 p-2 rounded text-base"
+              required
+            >
+              {provincias.map((prov) => (
+                <option key={prov} value={prov}>{prov}</option>
+              ))}
+            </select>
+          </div>
+  
+          <div>
+            <label htmlFor="contrasena" className="block text-lg mb-1 font-semibold">
+              Nueva contraseña:
+            </label>
+            <input
+              type="password"
+              name="contrasena"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              className="w-full border border-gray-300 p-2 rounded text-base"
+            />
+          </div>
+  
+          <button
+            type="submit"
+            className="bg-[#0395ff] hover:bg-[#0277cc] text-white font-bold py-2 px-4 rounded-full transition"
+          >
+            Actualizar
+          </button>
+        </form>
+  
+        <Link to="/principal" className="text-blue-500 hover:underline mt-6 block text-center text-lg">
+          Volver al inicio
+        </Link>
       </div>
+  
+      {/* Fondo decorativo */}
       <div
         className="absolute bottom-0 left-0 w-full h-full bg-no-repeat bg-bottom bg-cover z-[-1]"
         style={{
@@ -231,7 +236,7 @@ const Perfil = () => {
         }}
       />
     </div>
-  );
+  );  
 };
 
 export default Perfil;
