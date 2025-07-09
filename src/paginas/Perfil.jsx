@@ -155,7 +155,7 @@ const Perfil = () => {
   
       {/* Botón cerrar sesión */}
       <button
-        className="absolute top-6 right-10 py-[10px] px-[20px] text-white bg-[#ff2d01] hover:bg-[#ff78e5] transition z-10"
+        className="fixed top-6 right-10 py-[10px] px-[20px] text-white bg-[#ff2d01] hover:bg-[#ff78e5] transition z-10"
         onClick={handleLogout}
       >
         Cerrar sesión
@@ -173,10 +173,10 @@ const Perfil = () => {
       </div>
   
       {/* Contenedor principal */}
-      <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-xl p-10 w-full max-w-3xl mx-auto mt-20 font-['Roboto']">
+      <div className="p-10 font-['Roboto']">
         <h1 className="text-4xl font-bold text-center mb-8">Tu perfil</h1>
   
-        <div className="mb-6 text-xl">
+        <div className="mb-20 text-xl">
           <p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p>
           <p><strong>Edad:</strong> {user.edad || "No disponible"}</p>
           <p><strong>Género:</strong> {user.genero || "No disponible"}</p>
