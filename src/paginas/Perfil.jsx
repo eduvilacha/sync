@@ -4,6 +4,7 @@ import logo from "../img/sync_logo.png";
 import imgFondoBajo from "../img/sync_fondo_paginas.png";
 
 const Perfil = () => {
+  console.log("PERFIL CARGADO");
   const [user, setUser] = useState({
     nombre: "",
     edad: "",
