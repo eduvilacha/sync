@@ -172,8 +172,13 @@ const Perfil = () => {
       </div>
   
       {/* Caja principal con el contenido del perfil */}
+    
       <div className="bg-white rounded-2xl shadow-xl p-10 w-full max-w-3xl mx-auto mt-12 font-['Roboto']">
       <h1 className="text-4xl font-bold text-center mb-8">Tu perfil</h1>
+      <div className="bg-red-500 text-white p-4 text-2xl">
+  PROBANDO ESTILOS TAILWIND
+</div>
+
 
       <div className="mb-6 text-xl">
         <p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p>
