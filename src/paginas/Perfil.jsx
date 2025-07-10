@@ -150,7 +150,7 @@ const Perfil = () => {
 
   
   return (
-    <div className="pagina-perfil min-h-screen relative bg-[#f2f2f2] p-0 m-0 overflow-hidden">
+    <div className="pagina-perfil min-h-screen relative p-4 m-6 overflow-hidden">
       {error && <p className="text-red-500 text-center mt-4">{error}</p>}
   
       {/* Botón cerrar sesión */}
