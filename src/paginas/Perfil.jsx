@@ -155,7 +155,8 @@ const Perfil = () => {
   
       {/* Botón cerrar sesión */}
       <button
-        className="fixed top-6 right-10 py-[10px] px-[20px] text-white bg-[#ff2d01] hover:bg-[#ff78e5] transition z-10"
+        style={{ position: "absolute", top: "25px", right: "50px" }}
+        className="py-[10px] px-[20px] text-[#ffffff] bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-10"
         onClick={handleLogout}
       >
         Cerrar sesión

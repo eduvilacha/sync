@@ -114,7 +114,7 @@ const Principal = () => {
         <Link to="/perfil" className="group" style={{ width: "20%" }}>
           <div className="bg-orange-500 text-white rounded-full flex flex-col items-center justify-center w-full h-[120px] transition-transform hover:scale-105">
             <img src={imgPerfil} alt="Perfil" className="w-[100%] mb-2 transition-transform group-hover:scale-110 object-contain" />
-            <p className="textoOpciones text-center">Perfil</p>
+            <p className="textoOpciones text-center">Mi Perfil</p>
           </div>
         </Link>
       </div>
