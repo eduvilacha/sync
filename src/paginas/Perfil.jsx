@@ -150,7 +150,7 @@ const Perfil = () => {
 
   
   return (
-    <div className="pagina-perfil min-h-screen relative p-4 m-6 overflow-hidden">
+    <div className="pagina-perfil min-h-screen relative overflow-hidden">
       {error && <p className="text-red-500 text-center mt-4">{error}</p>}
   
       {/* Botón cerrar sesión */}
@@ -174,7 +174,7 @@ const Perfil = () => {
       </div>
   
       {/* Contenedor principal */}
-      <div className="p-10 font-['Roboto']">
+      <div className="miperfil-contenido font-['Roboto']">
         <h1 className="text-4xl font-bold text-center mb-8">Tu perfil</h1>
   
         <div className="mb-20 text-xl">
