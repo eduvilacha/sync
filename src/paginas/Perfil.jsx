@@ -177,12 +177,12 @@ const Perfil = () => {
       <div className="miperfil-contenido font-['Roboto']">
         <h1 className="text-4xl font-bold text-center">Tu perfil</h1>
   
-        <form onSubmit={handleSubmit} className="flex flex-col text-xl space-y-[2px]">
-          <div><p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p></div>
-          <div><p><strong>Edad:</strong> {user.edad || "No disponible"}</p></div>
-          <div><p><strong>Género:</strong> {user.genero || "No disponible"}</p></div>
+        <form onSubmit={handleSubmit} className="flex flex-col text-xl">
+          <div className="mb-[4px]"><p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p></div>
+          <div className="mb-[4px]"><p><strong>Edad:</strong> {user.edad || "No disponible"}</p></div>
+          <div className="mb-[4px]"><p><strong>Género:</strong> {user.genero || "No disponible"}</p></div>
 
-          <div>
+          <div className="mb-[4px]">
             <label htmlFor="provincia" className="block font-semibold">
               <p><strong>Provincia:</strong></p>
             </label>
@@ -199,7 +199,7 @@ const Perfil = () => {
             </select>
           </div>
 
-          <div>
+          <div className="mb-[4px]">
             <label htmlFor="contrasena" className="block font-semibold">
               <p><strong>Nueva contraseña:</strong></p>
             </label>
