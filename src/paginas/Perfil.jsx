@@ -175,7 +175,7 @@ const Perfil = () => {
   
       {/* Contenedor principal */}
       <div className="miperfil-contenido font-['Roboto']">
-        <h1 className="text-4xl font-bold text-center mb-8">Tu perfil</h1>
+        <h1 className="text-4xl font-bold text-center">Tu perfil</h1>
   
         <div className="mb-20 text-xl">
           <p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p>
@@ -183,7 +183,7 @@ const Perfil = () => {
           <p><strong>Género:</strong> {user.genero || "No disponible"}</p>
         </div>
   
-        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <form onSubmit={handleSubmit} className="flex flex-col">
           <div>
             <label htmlFor="provincia" className="perfilpropiedades block font-semibold mb-10 text-xl">
               <p><strong>Provincia:</strong></p>
