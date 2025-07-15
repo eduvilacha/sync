@@ -211,10 +211,10 @@ const Perfil = () => {
             <button
             type="submit"
             form="perfil-formulario"
-            className="botonactualizar w-[40%] h-[40px] bg-[#0395ff] hover:bg-[#0277cc] font-semibold transition">Actualizar</button>
+            className="botonactualizar w-[40%] h-[40px] bg-[#0395ff] hover:bg-[#0277cc] font-semibold transition"><p>Actualizar</p></button>
           </div>
           <div>
-            <Link to="/principal" className="text-blue-500 hover:underline mt-6 block text-center text-lg">Volver al inicio</Link>
+            <Link to="/principal" className="text-blue-500 hover:underline mt-6 block text-left text-lg">Volver al inicio</Link>
           </div>
         </form>
       </div>
