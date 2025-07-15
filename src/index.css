@@ -5,7 +5,8 @@
 
 /* -- -- -- -- -- HOME LOGIN REGISTRO -- -- -- -- -- -- */
 .home h1,
-.login h1{
+.login h1,
+.pagina-perfil h1{
     font-family: 'Roboto', sans-serif;
     font-size: 6rem;
 }
@@ -51,7 +52,12 @@
 }
 
 /* -- -- -- -- -- PERFIL -- -- -- -- -- -- */
-.pagina-perfil p{
+.pagina-perfil p,
+.pagina-perfil .volverinicio,
+.pagina-perfil .botonactualizar,
+.pagina-perfil .perfilpropiedades,
+.pagina-perfil button,
+.pagina-perfil a {
   font-family: 'Roboto', sans-serif;
   font-size: 1.5rem;
 }

@@ -185,7 +185,7 @@ const Perfil = () => {
   
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div>
-            <label htmlFor="provincia" className="block text-lg mb-1 font-semibold">
+            <label htmlFor="provincia" className="perfilpropiedades block text-lg mb-1 font-semibold">
               Provincia:
             </label>
             <select
@@ -202,7 +202,7 @@ const Perfil = () => {
           </div>
   
           <div>
-            <label htmlFor="contrasena" className="block text-lg mb-1 font-semibold">
+            <label htmlFor="contrasena" className="perfilpropiedades block text-lg mb-1 font-semibold">
               Nueva contraseña:
             </label>
             <input
@@ -216,13 +216,13 @@ const Perfil = () => {
   
           <button
             type="submit"
-            className="bg-[#0395ff] hover:bg-[#0277cc] text-white font-semibold py-2 px-4 transition"
+            className="botonactualizar bg-[#0395ff] hover:bg-[#0277cc] text-white font-semibold py-2 px-4 transition"
           >
             Actualizar
           </button>
         </form>
   
-        <Link to="/principal" className="text-blue-500 hover:underline mt-6 block text-center text-lg">
+        <Link to="/principal" className="volverinicio text-blue-500 hover:underline mt-6 block text-center text-lg">
           Volver al inicio
         </Link>
       </div>
