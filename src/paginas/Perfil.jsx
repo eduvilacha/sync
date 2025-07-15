@@ -177,50 +177,42 @@ const Perfil = () => {
       <div className="miperfil-contenido font-['Roboto']">
         <h1 className="text-4xl font-bold text-center">Tu perfil</h1>
   
-        <div className="mb-20 text-xl">
-          <p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p>
-          <p><strong>Edad:</strong> {user.edad || "No disponible"}</p>
-          <p><strong>Género:</strong> {user.genero || "No disponible"}</p>
-        </div>
-  
-        <form onSubmit={handleSubmit} className="flex flex-col">
-          <div>
-            <label htmlFor="provincia" className="perfilpropiedades block font-semibold mb-2 text-xl">
-              <p><strong>Provincia:</strong></p>
-            </label>
-            <select
-              name="provincia"
-              value={user.provincia}
-              onChange={(e) => setUser({ ...user, provincia: e.target.value })}
-              className="w-[40%] h-[30px] border border-gray-300 px-3 py-2 rounded text-base"
-              required
-            >
-              {provincias.map((prov) => (
-                <option key={prov} value={prov}>{prov}</option>
-              ))}
-            </select>
-          </div>
-  
-          <div>
-            <label htmlFor="contrasena" className="block font-semibold mb-2 text-xl">
-              <p><strong>Nueva contraseña:</strong></p>
-            </label>
-            <input
-              type="password"
-              name="contrasena"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              className="w-[40%] h-[30px] border border-gray-300 px-3 py-2 rounded text-base"
-            />
-          </div>
-  
-          <button
-            type="submit"
-            className="w-[40%] h-[30px] bg-[#0395ff] hover:bg-[#0277cc] text-white font-semibold py-2 px-4 mt-5 rounded transition"
-          >
-            <p>Actualizar</p>
-          </button>
-        </form>
+        <form onSubmit={handleSubmit} className="flex flex-col text-xl space-y-4">
+  <p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p>
+  <p><strong>Edad:</strong> {user.edad || "No disponible"}</p>
+  <p><strong>Género:</strong> {user.genero || "No disponible"}</p>
+
+  <div>
+    <label htmlFor="provincia" className="block font-semibold mb-1">
+      <p><strong>Provincia:</strong></p>
+    </label>
+    <select
+      name="provincia"
+      value={user.provincia}
+      onChange={(e) => setUser({ ...user, provincia: e.target.value })}
+      className="w-[40%] h-[40px] border border-gray-300 px-3 py-2 rounded text-base"
+      required
+    >
+      {provincias.map((prov) => (
+        <option key={prov} value={prov}>{prov}</option>
+      ))}
+    </select>
+  </div>
+
+  <div>
+    <label htmlFor="contrasena" className="block font-semibold mb-1">
+      <p><strong>Nueva contraseña:</strong></p>
+    </label>
+    <input
+      type="password"
+      name="contrasena"
+      value={newPassword}
+      onChange={(e) => setNewPassword(e.target.value)}
+      className="w-[40%] h-[40px] border border-gray-300 px-3 py-2 rounded text-base"
+    />
+  </div>
+</form>
+
   
         <Link to="/principal" className="text-blue-500 hover:underline mt-6 block text-center text-lg">
           Volver al inicio
