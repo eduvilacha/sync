@@ -178,9 +178,9 @@ const Perfil = () => {
         <h1 className="text-4xl font-bold text-center">Tu perfil</h1>
   
         <form onSubmit={handleSubmit} className="flex flex-col text-xl space-y-[5px]">
-          <p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p>
-          <p><strong>Edad:</strong> {user.edad || "No disponible"}</p>
-          <p><strong>Género:</strong> {user.genero || "No disponible"}</p>
+          <div><p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p></div>
+          <div><p><strong>Edad:</strong> {user.edad || "No disponible"}</p></div>
+          <div><p><strong>Género:</strong> {user.genero || "No disponible"}</p></div>
 
           <div>
             <label htmlFor="provincia" className="block font-semibold">
@@ -190,7 +190,7 @@ const Perfil = () => {
               name="provincia"
               value={user.provincia}
               onChange={(e) => setUser({ ...user, provincia: e.target.value })}
-              className="w-[40%] h-[40px] border border-gray-300 px-3 py-2 rounded text-base"
+              className="w-[40%] h-[40px] border border-gray-300 px-3 py-1 rounded text-base"
               required
             >
               {provincias.map((prov) => (
@@ -208,7 +208,7 @@ const Perfil = () => {
               name="contrasena"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className="w-[40%] h-[40px] border border-gray-300 px-3 py-2 rounded text-base"
+              className="w-[40%] h-[40px] border border-gray-300 px-3 py-1 rounded text-base"
             />
           </div>
         </form>
