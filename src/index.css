@@ -65,7 +65,13 @@
 }
 
 .pagina-perfil .perfilformulario{
+  display: flex;
+  flex-direction: column;
   gap: 2px;
+}
+
+.pagina-perfil .botonactualizar{
+  border-radius: 16px;
 }
 
 @media (max-width: 1390px){

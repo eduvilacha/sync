@@ -177,7 +177,7 @@ const Perfil = () => {
       <div className="miperfil-contenido font-['Roboto']">
         <h1 className="text-4xl font-bold text-center">Tu perfil</h1>
 
-        <form onSubmit={handleSubmit} className="perfilformulario flex flex-col text-xl">
+        <form onSubmit={handleSubmit} className="perfilformulario text-xl">
           <div><p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p></div>
           <div><p><strong>Edad:</strong> {user.edad || "No disponible"}</p></div>
           <div><p><strong>Género:</strong> {user.genero || "No disponible"}</p></div>
@@ -189,7 +189,7 @@ const Perfil = () => {
               name="provincia"
               value={user.provincia}
               onChange={(e) => setUser({ ...user, provincia: e.target.value })}
-              className="w-[40%] h-[40px] border border-gray-300 rounded text-base"
+              className="w-[40%] h-[40px] border border-gray-300 text-base"
               required>
               {provincias.map((prov) => (
                 <option key={prov} value={prov}>{prov}</option>
@@ -204,14 +204,14 @@ const Perfil = () => {
               name="contrasena"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className="w-[40%] h-[40px] border border-gray-300 rounded text-base"
+              className="w-[40%] h-[40px] border border-gray-300 text-base"
             />
           </div>
           <div>
             <button
             type="submit"
             form="perfil-formulario"
-            className="w-[40%] h-[40px] bg-[#0395ff] hover:bg-[#0277cc] text-white font-semibold px-4 mt-5 rounded transition">Actualizar</button>
+            className="botonactualizar w-[40%] h-[40px] bg-[#0395ff] hover:bg-[#0277cc] font-semibold transition">Actualizar</button>
           </div>
           <div>
             <Link to="/principal" className="text-blue-500 hover:underline mt-6 block text-center text-lg">Volver al inicio</Link>
