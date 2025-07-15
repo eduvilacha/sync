@@ -67,7 +67,7 @@
 .pagina-perfil .perfilformulario{
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 10px;
   margin-bottom: 4px;
 }
 
