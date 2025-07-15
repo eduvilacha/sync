@@ -53,11 +53,7 @@
 
 /* -- -- -- -- -- PERFIL -- -- -- -- -- -- */
 .pagina-perfil p,
-.pagina-perfil .volverinicio,
-.pagina-perfil .botonactualizar,
-.pagina-perfil .perfilpropiedades,
-.pagina-perfil button,
-.pagina-perfil a {
+.pagina-perfil .botonactualizar{
   font-family: 'Roboto', sans-serif;
   font-size: 1.5rem;
 }

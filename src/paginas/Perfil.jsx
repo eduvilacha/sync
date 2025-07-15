@@ -185,8 +185,8 @@ const Perfil = () => {
   
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div>
-            <label htmlFor="provincia" className="perfilpropiedades block text-lg mb-1 font-semibold">
-              Provincia:
+            <label htmlFor="provincia" className="perfilpropiedades block font-semibold mb-20 text-xl">
+              <strong>Provincia:</strong>
             </label>
             <select
               name="provincia"
@@ -202,8 +202,8 @@ const Perfil = () => {
           </div>
   
           <div>
-            <label htmlFor="contrasena" className="perfilpropiedades block text-lg mb-1 font-semibold">
-              Nueva contraseña:
+            <label htmlFor="contrasena" className="block font-semibold mb-20 text-xl">
+              <strong>Nueva contraseña:</strong>
             </label>
             <input
               type="password"
@@ -222,7 +222,7 @@ const Perfil = () => {
           </button>
         </form>
   
-        <Link to="/principal" className="volverinicio text-blue-500 hover:underline mt-6 block text-center text-lg">
+        <Link to="/principal" className="text-blue-500 hover:underline mt-6 block text-center text-lg">
           Volver al inicio
         </Link>
       </div>
