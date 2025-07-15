@@ -186,13 +186,13 @@ const Perfil = () => {
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           <div>
             <label htmlFor="provincia" className="perfilpropiedades block font-semibold mb-20 text-xl">
-              <strong>Provincia:</strong>
+              <p><strong>Provincia:</strong></p>
             </label>
             <select
               name="provincia"
               value={user.provincia}
               onChange={(e) => setUser({ ...user, provincia: e.target.value })}
-              className="w-[60%] border border-gray-300 p-1 rounded text-base"
+              className="w-[40%] h-[48px] border border-gray-300 px-3 py-2 rounded text-base"
               required
             >
               {provincias.map((prov) => (
@@ -203,14 +203,14 @@ const Perfil = () => {
   
           <div>
             <label htmlFor="contrasena" className="block font-semibold mb-20 text-xl">
-              <strong>Nueva contraseña:</strong>
+              <p><strong>Nueva contraseña:</strong></p>
             </label>
             <input
               type="password"
               name="contrasena"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className="w-[60%] border border-gray-300 p-1 rounded text-base"
+              className="w-[40%] h-[48px] border border-gray-300 px-3 py-2 rounded text-base"
             />
           </div>
   
