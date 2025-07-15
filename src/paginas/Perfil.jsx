@@ -177,7 +177,7 @@ const Perfil = () => {
       <div className="miperfil-contenido font-['Roboto']">
         <h1 className="text-4xl font-bold text-center">Tu perfil</h1>
   
-        <form onSubmit={handleSubmit} className="flex flex-col text-xl space-y-2">
+        <form onSubmit={handleSubmit} className="flex flex-col text-xl space-y-1">
           <p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p>
           <p><strong>Edad:</strong> {user.edad || "No disponible"}</p>
           <p><strong>Género:</strong> {user.genero || "No disponible"}</p>
