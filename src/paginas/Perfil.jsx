@@ -177,7 +177,7 @@ const Perfil = () => {
       <div className="miperfil-contenido font-['Roboto']">
         <h1 className="text-4xl font-bold text-center">Tu perfil</h1>
 
-        <form onSubmit={handleSubmit} className="flex flex-col text-xl">
+        <form onSubmit={handleSubmit} className="perfilformulario flex flex-col text-xl">
           <div><p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p></div>
           <div><p><strong>Edad:</strong> {user.edad || "No disponible"}</p></div>
           <div><p><strong>Género:</strong> {user.genero || "No disponible"}</p></div>
@@ -213,51 +213,10 @@ const Perfil = () => {
             form="perfil-formulario"
             className="w-[40%] h-[40px] bg-[#0395ff] hover:bg-[#0277cc] text-white font-semibold px-4 mt-5 rounded transition">Actualizar</button>
           </div>
-        </form>
-
-  
-        <form onSubmit={handleSubmit} className="flex flex-col text-xl">
-          <div><p><strong>Nombre:</strong> {user.nombre || "No disponible"}</p></div>
-          <div><p><strong>Edad:</strong> {user.edad || "No disponible"}</p></div>
-          <div><p><strong>Género:</strong> {user.genero || "No disponible"}</p></div>
-
           <div>
-            <label htmlFor="provincia" className="block font-semibold">
-              <p><strong>Provincia:</strong></p>
-            </label>
-            <select
-              name="provincia"
-              value={user.provincia}
-              onChange={(e) => setUser({ ...user, provincia: e.target.value })}
-              className="w-[40%] h-[40px] border border-gray-300 rounded text-base"
-              required>
-              {provincias.map((prov) => (
-                <option key={prov} value={prov}>{prov}</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label htmlFor="contrasena" className="block font-semibold">
-              <p><strong>Nueva contraseña:</strong></p>
-            </label>
-            <input
-              type="password"
-              name="contrasena"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              className="w-[40%] h-[40px] border border-gray-300 rounded text-base"
-            />
+            <Link to="/principal" className="text-blue-500 hover:underline mt-6 block text-center text-lg">Volver al inicio</Link>
           </div>
         </form>
-        <button
-          type="submit"
-          form="perfil-formulario"
-          className="w-[40%] h-[40px] bg-[#0395ff] hover:bg-[#0277cc] text-white font-semibold px-4 mt-5 rounded transition">Actualizar</button>
-          
-        <Link to="/principal" className="text-blue-500 hover:underline mt-6 block text-center text-lg">
-          Volver al inicio
-        </Link>
       </div>
   
       {/* Fondo decorativo */}

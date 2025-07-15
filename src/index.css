@@ -64,6 +64,10 @@
   padding-right: 20px;
 }
 
+.pagina-perfil .perfilformulario{
+  gap: 2px;
+}
+
 @media (max-width: 1390px){
   /* -- -- -- -- -- HOME -- -- -- -- -- -- */
   .home-background,
