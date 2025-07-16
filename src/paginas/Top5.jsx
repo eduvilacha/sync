@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import logo from "../img/sync_logo.png";
 
 const Top5 = () => {
   const navigate = useNavigate();
   const [compatibles, setCompatibles] = useState([]);
   const [error, setError] = useState("");
+
+  const handleLogout = () => {
+    fetch("https://servidor-sync.onrender.com/logout", {
+      method: "GET",
+      credentials: "include",
+    }).then(() => navigate("/login"));
+  };
+  
 
   useEffect(() => {
     const fetchTop5 = async () => {
@@ -29,6 +38,25 @@ const Top5 = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-100 to-white p-8">
+      {/* Botón cerrar sesión */}
+<button
+  onClick={handleLogout}
+  className="absolute top-5 right-10 py-2 px-4 text-white bg-[#ff2d01] hover:bg-[#ff78e5] rounded"
+>
+  Cerrar sesión
+</button>
+
+{/* Logo */}
+<div className="w-full flex justify-start ml-6 mt-4 z-10 relative">
+  <Link to="/principal">
+    <img
+      src={logo}
+      alt="Logo"
+      className="w-[120px] h-auto cursor-pointer"
+    />
+  </Link>
+</div>
+
       <h1 className="text-3xl font-bold text-center text-[#0395ff] mb-8">💘 Tus 5 Compatibilidades Principales</h1>
 
       {error && <p className="text-red-500 text-center">{error}</p>}
