@@ -174,16 +174,6 @@ const Test = () => {
     )}
   </div>
 </form>
-
-
-      <div
-        className="absolute bottom-0 left-0 w-full h-full bg-no-repeat bg-bottom bg-cover z-[-1]"
-        style={{
-          backgroundImage: `url(${fondo})`,
-          backgroundPosition: "bottom",
-          backgroundAttachment: "fixed",
-        }}
-      />
     </div>
   );
 };
