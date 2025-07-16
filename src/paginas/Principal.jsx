@@ -4,7 +4,6 @@ import logo from "../img/sync_logo.png";
 import imgPerfil from "../img/sync_perfil.png";
 import imgTest from "../img/sync_test.png";
 import imgCompatibilidad from "../img/sync_comparativa.png";
-import imgFondoBajo from "../img/sync_fondo_paginas.png";
 import Test from "./Test";
 
 const Principal = () => {
@@ -119,12 +118,7 @@ const Principal = () => {
         </Link>
       </div>
 
-     <div
-        className="imagenfondoprincipal"
-        style={{
-          backgroundImage: `url(${imgFondoBajo})`,
-        }}
-      />
+     <div className="imagenfondoprincipal" />
     </div>
   );
 };
