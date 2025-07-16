@@ -119,11 +119,11 @@ const Test = () => {
 
   {/* Mostrar solo si hay preguntas cargadas */}
   {preguntas.length > 0 && (
-    <div className="bg-white rounded-2xl p-6 shadow-lg border-l-4 border-[#0395ff] transition-transform duration-300">
-      <p className="titulopreguntatest text-lg font-semibold text-[#333] mb-4">
+    <div className="cajapreguntas p-6">
+      <p className="text-lg font-semibold text-[#333] mb-4">
         Pregunta {preguntaActual + 1} de {preguntas.length}
       </p>
-      <p className="mb-4 text-black">{preguntas[preguntaActual].texto}</p>
+      <p className="titulopreguntatest mb-4 text-black">{preguntas[preguntaActual].texto}</p>
 
       <div className="opcionestest flex flex-col gap-3">
         {preguntas[preguntaActual].opciones.map((op, i) => (
