@@ -103,7 +103,7 @@ const Principal = () => {
           </div>
         </Link>
 
-        <Link to="/compatibilidad" className="group" style={{ width: "20%" }}>
+        <Link to="/top5" className="group" style={{ width: "20%" }}>
           <div className="bg-green-500 text-white rounded-full flex flex-col items-center justify-center w-full h-[120px] transition-transform hover:scale-105">
             <img src={imgCompatibilidad} alt="Compatibilidad" className="w-[100%] mb-2 transition-transform group-hover:scale-110 object-contain" />
             <p className="textoOpciones text-center">Compatibilidad</p>
