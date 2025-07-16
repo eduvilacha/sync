@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import logo from "../img/sync_logo.png";
-import imgFondoBajo from "../img/sync_fondo_paginas.png";
+import imgFondoBajo from "../img/sync_fondo2.png";
 
 const Perfil = () => {
   console.log("PERFIL CARGADO");
