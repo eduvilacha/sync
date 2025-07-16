@@ -10,6 +10,8 @@ const Test = () => {
   const [respuestas, setRespuestas] = useState([]);
   const [error, setError] = useState("");
   const [enviando, setEnviando] = useState(false);
+  const [preguntaActual, setPreguntaActual] = useState(0);
+
 
   useEffect(() => {
     const init = async () => {
@@ -83,55 +85,89 @@ const Test = () => {
 
   return (
     <div className="pagina-test min-h-screen p-8 relative">
+      
+      {/* Botón cerrar sesión */}
       <button
-        onClick={() => {
-          fetch("https://servidor-sync.onrender.com/logout", {
-            method: "GET",
-            credentials: "include",
-          }).then(() => navigate("/login"));
-        }}
-        className="absolute top-5 right-10 py-2 px-4 text-white bg-[#ff2d01] hover:bg-[#ff78e5] rounded"
+        style={{ position: "absolute", top: "25px", right: "50px" }}
+        className="py-[10px] px-[20px] text-[#ffffff] bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-50"
+        onClick={handleLogout}
       >
         Cerrar sesión
       </button>
 
-      <div className="mb-6 flex items-center">
-        <img src={logo} alt="Logo" className="w-[120px] mr-4" />
-        <h1 className="text-white text-3xl font-bold">Test de Compatibilidad</h1>
+      {/* Logo */}
+      <div className="w-full flex justify-start ml-6 mt-4 z-10 relative">
+        <Link to="/principal">
+          <img
+            src={logo}
+            alt="Logo"
+            className="w-[120px] h-auto cursor-pointer"
+          />
+        </Link>
       </div>
 
       {error && <p className="text-red-500 mb-4">{error}</p>}
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        {preguntas.map((pregunta, index) => (
-          <div key={index} className="bg-white rounded p-4 shadow">
-            <p className="font-semibold mb-2 text-black">{pregunta.texto}</p>
-            <div className="flex gap-4">
-            {pregunta.opciones.map((op, i) => (
-                <label key={i} className="text-black">
-                  <input
-                    type="radio"
-                    name={`pregunta-${index}`}
-                    value={i}
-                    checked={respuestas[index] === i}
-                    onChange={() => handleRespuesta(index, i)}
-                    className="mr-2"
-                  />
-                  {op}
-                </label>
-              ))}
-            </div>
-          </div>
-        ))}
 
-        <button
-          type="submit"
-          className="bg-[#0395ff] text-white text-xl px-6 py-2 rounded hover:bg-[#0277cc] disabled:opacity-50"
-          disabled={enviando}
-        >
-          {enviando ? "Enviando..." : "Enviar respuestas"}
-        </button>
-      </form>
+  {/* Mostrar solo si hay preguntas cargadas */}
+  {preguntas.length > 0 && (
+    <div className="bg-white rounded-2xl p-6 shadow-lg border-l-4 border-[#0395ff] transition-transform duration-300">
+      <p className="text-lg font-semibold text-[#333] mb-4">
+        Pregunta {preguntaActual + 1} de {preguntas.length}
+      </p>
+      <p className="mb-4 text-black">{preguntas[preguntaActual].texto}</p>
+
+      <div className="flex flex-col gap-3">
+        {preguntas[preguntaActual].opciones.map((op, i) => (
+          <label key={i} className="flex items-center gap-3 cursor-pointer">
+            <input
+              type="radio"
+              name={`pregunta-${preguntaActual}`}
+              value={i}
+              checked={respuestas[preguntaActual] === i}
+              onChange={() => handleRespuesta(preguntaActual, i)}
+              className="form-radio text-[#0395ff] h-5 w-5"
+            />
+            <span className="text-black">{op}</span>
+          </label>
+        ))}
+      </div>
+    </div>
+  )}
+
+  {/* Navegación entre preguntas */}
+  <div className="flex justify-between mt-6">
+    <button
+      type="button"
+      onClick={() => setPreguntaActual(p => Math.max(p - 1, 0))}
+      className="bg-gray-300 text-black px-4 py-2 rounded disabled:opacity-50"
+      disabled={preguntaActual === 0}
+    >
+      Anterior
+    </button>
+
+    {preguntaActual < preguntas.length - 1 ? (
+      <button
+        type="button"
+        onClick={() => setPreguntaActual(p => p + 1)}
+        disabled={respuestas[preguntaActual] == null}
+        className="bg-[#0395ff] text-white px-6 py-2 rounded hover:bg-[#0277cc] disabled:opacity-50"
+      >
+        Siguiente
+      </button>
+    ) : (
+      <button
+        type="submit"
+        disabled={respuestas.includes(null) || enviando}
+        className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 disabled:opacity-50"
+      >
+        {enviando ? "Enviando..." : "Enviar respuestas"}
+      </button>
+    )}
+  </div>
+</form>
+
 
       <div
         className="absolute bottom-0 left-0 w-full h-full bg-no-repeat bg-bottom bg-cover z-[-1]"
