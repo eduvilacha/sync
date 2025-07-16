@@ -47,11 +47,12 @@ const Test = () => {
     init();
   }, [navigate]);
 
-  const handleRespuesta = (index, valor) => {
+  const handleRespuesta = (indexPregunta, indiceOpcion) => {
     const nuevas = [...respuestas];
-    nuevas[index] = valor;
+    nuevas[indexPregunta] = indiceOpcion;
     setRespuestas(nuevas);
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -106,14 +107,14 @@ const Test = () => {
           <div key={index} className="bg-white rounded p-4 shadow">
             <p className="font-semibold mb-2 text-black">{pregunta.texto}</p>
             <div className="flex gap-4">
-              {pregunta.opciones.map((op, i) => (
+            {pregunta.opciones.map((op, i) => (
                 <label key={i} className="text-black">
                   <input
                     type="radio"
                     name={`pregunta-${index}`}
-                    value={op}
-                    checked={respuestas[index] === op}
-                    onChange={() => handleRespuesta(index, op)}
+                    value={i}
+                    checked={respuestas[index] === i}
+                    onChange={() => handleRespuesta(index, i)}
                     className="mr-2"
                   />
                   {op}
