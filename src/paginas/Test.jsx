@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import logo from "../img/sync_logo.png";
 import fondo from "../img/sync_fondo_paginas.png";
 
