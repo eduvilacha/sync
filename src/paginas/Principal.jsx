@@ -120,10 +120,9 @@ const Principal = () => {
       </div>
 
      <div
-        className="absolute bottom-0 left-0 w-full h-full bg-no-repeat bg-bottom bg-cover z-[-1]"
+        className="imagenfondoprincipal"
         style={{
           backgroundImage: `url(${imgFondoBajo})`,
-          backgroundPosition: "0% 70%",
         }}
       />
     </div>
