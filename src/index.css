@@ -73,7 +73,7 @@
 }
 
 .pagina-perfil .botonactualizar{
-  border-radius: 16px;
+  border-radius: 30px;
 }
 
 .pagina-perfil .perfilformulario p,
@@ -90,7 +90,7 @@
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center 150%;
+  background-position: center 200%;
   z-index: -1; 
 }
 

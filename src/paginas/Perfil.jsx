@@ -150,13 +150,13 @@ const Perfil = () => {
 
   
   return (
-    <div className="pagina-perfil min-h-screen relative overflow-hidden">
+    <div className="pagina-perfil min-h-screen relative overflow-visible">
       {error && <p className="text-red-500 text-center mt-4">{error}</p>}
   
       {/* Botón cerrar sesión */}
       <button
         style={{ position: "absolute", top: "25px", right: "50px" }}
-        className="py-[10px] px-[20px] text-[#ffffff] bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-10"
+        className="py-[10px] px-[20px] text-[#ffffff] bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-50"
         onClick={handleLogout}
       >
         Cerrar sesión
