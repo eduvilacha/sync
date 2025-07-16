@@ -221,10 +221,9 @@ const Perfil = () => {
   
       {/* Fondo decorativo */}
       <div
-        className="absolute bottom-20 left-0 w-full h-full bg-no-repeat bg-bottom bg-cover z-[-1]"
+        className="fondoimagenperfil"
         style={{
           backgroundImage: `url(${imgFondoBajo})`,
-          backgroundPosition: "bottom",
         }}
       />
     </div>
