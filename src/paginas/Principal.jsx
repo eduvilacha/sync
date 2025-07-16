@@ -117,8 +117,6 @@ const Principal = () => {
           </div>
         </Link>
       </div>
-
-     <div className="imagenfondoprincipal" />
     </div>
   );
 };
