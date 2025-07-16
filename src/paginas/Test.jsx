@@ -111,6 +111,8 @@ const Test = () => {
         </Link>
       </div>
 
+      <h1 className=" text-4xl font-bold text-center">Sync...ronizando</h1>
+
       {error && <p className="text-red-500 mb-4">{error}</p>}
 
       <form onSubmit={handleSubmit} className="space-y-6">

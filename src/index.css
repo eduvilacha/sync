@@ -6,7 +6,8 @@
 /* -- -- -- -- -- HOME LOGIN REGISTRO -- -- -- -- -- -- */
 .home h1,
 .login h1,
-.pagina-perfil h1{
+.pagina-perfil h1,
+.pagina-test h1{
     font-family: 'Roboto', sans-serif;
     font-size: 6rem;
 }
@@ -92,6 +93,17 @@
   background-size: cover;
   background-position: center 200%;
   z-index: -1; 
+}
+
+
+/* -------- TEST ---------*/
+.titulopreguntatest{
+  font-family: 'Roboto', sans-serif;
+  font-size: 3rem;
+}
+.opcionestest{
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
 }
 
 @media (max-width: 1390px){
