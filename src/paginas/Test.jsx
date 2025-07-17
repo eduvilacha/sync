@@ -29,22 +29,34 @@ const Test = () => {
           credentials: "include",
         });
         const authData = await authRes.json();
-
+  
         if (!authData.isAuthenticated) {
           setError("Sesión expirada. Redirigiendo...");
           setTimeout(() => navigate("/login"), 2000);
           return;
         }
-
+  
         setUserName(authData.userName);
-
+  
+        // 🚨 Nuevo paso: comprobar si ya ha hecho el test
+        const realizadoRes = await fetch("https://servidor-sync.onrender.com/test-realizado", {
+          method: "GET",
+          credentials: "include",
+        });
+        const realizadoData = await realizadoRes.json();
+        if (realizadoData.realizado) {
+          navigate("/test-completado");
+          return;
+        }
+  
+        // Si no lo ha hecho, cargar preguntas
         const pregRes = await fetch("https://servidor-sync.onrender.com/preguntas", {
           method: "GET",
           credentials: "include",
         });
-
+  
         if (!pregRes.ok) throw new Error("Error al cargar preguntas");
-
+  
         const data = await pregRes.json();
         setPreguntas(data);
         setRespuestas(new Array(data.length).fill(null));
@@ -53,9 +65,10 @@ const Test = () => {
         console.error(err);
       }
     };
-
+  
     init();
   }, [navigate]);
+  
 
   const handleRespuesta = (indexPregunta, indiceOpcion) => {
     const nuevas = [...respuestas];
@@ -82,7 +95,7 @@ const Test = () => {
 
       if (!res.ok) throw new Error("Error al enviar respuestas");
 
-      navigate("/top5");
+      navigate("/test-completado");
     } catch (err) {
       setError("Error al enviar el test");
       console.error(err);
