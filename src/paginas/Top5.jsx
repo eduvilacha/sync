@@ -70,7 +70,7 @@ const Top5 = () => {
             <p className="text-lg font-bold text-[#0395ff]">{item.porcentaje}%</p>
 
             {/* Barra de compatibilidad visual */}
-            <div className="w-full bg-gray-200 rounded-full h-4">
+            <div className="w-full bg-gray-200 rounded-full h-4 overflow-hidden min-w-[100px]">
               <div
                 className="h-4 rounded-full bg-[#0395ff] transition-all duration-500"
                 style={{ width: `${item.porcentaje}%` }}
