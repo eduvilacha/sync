@@ -25,12 +25,10 @@ const TestCompletado = () => {
         style={{ position: "absolute", top: "25px", right: "50px" }}
         className="py-[10px] px-[20px] text-[#ffffff] bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-50"
         onClick={handleLogout}
-      >
-        Cerrar sesión
-      </button>
+      >Cerrar sesión</button>
 
       {/* Logo */}
-      <div className="absolute top-5 left-6">
+      <div className="w-full flex justify-start ml-6 mt-4 z-10 relative">
         <Link to="/principal">
           <img
             src={logo}
