@@ -22,30 +22,38 @@ const TestCompletado = () => {
     <div className="min-h-screen relative flex flex-col items-center justify-center p-6 text-center">
       {/* Botón cerrar sesión */}
       <button
+        style={{ position: "absolute", top: "25px", right: "50px" }}
+        className="py-[10px] px-[20px] text-[#ffffff] bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-50"
         onClick={handleLogout}
-        className="absolute top-5 right-10 py-2 px-4 text-white bg-[#ff2d01] hover:bg-[#ff78e5] rounded z-50"
       >
         Cerrar sesión
       </button>
 
-      {/* Logo con link hacia principal */}
-      <div className="absolute top-5 left-6">
-        <img
-          src={logo}
-          alt="Logo"
-          className="w-[120px] h-auto cursor-pointer"
-          onClick={() => navigate("/principal")}
-        />
+      {/* Logo */}
+      <div className="w-full flex justify-start ml-6 mt-4 z-10 relative">
+        <Link to="/principal">
+          <img
+            src={logo}
+            alt="Logo"
+            className="w-[120px] h-auto cursor-pointer"
+          />
+        </Link>
       </div>
 
       {/* Mensaje principal */}
       <div className="bg-white bg-opacity-80 p-10 rounded-2xl shadow-xl max-w-xl">
-        <h1 className="text-3xl font-bold text-[#0395ff] mb-4">
+        <h1 className="text-3xl font-bold mb-4">
           ¡Ya has completado el test!
         </h1>
         <p className="text-lg text-[#333]">
           Puedes consultar tus compatibilidades en la sección <strong>Top 5</strong> o seguir explorando la app.
         </p>
+
+        <button
+        onClick={() => navigate("/top5")}
+        className="bg-[#0395ff] text-white px-6 py-3 rounded-lg text-lg hover:bg-[#0277cc] transition"
+         > Ver Top 5 </button>
+         
       </div>
 
       {/* Fondo decorativo */}
