@@ -39,12 +39,11 @@ const Top5 = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-100 to-white p-8">
       {/* Botón cerrar sesión */}
-<button
-  onClick={handleLogout}
-  className="absolute top-5 right-10 py-2 px-4 text-white bg-[#ff2d01] hover:bg-[#ff78e5] rounded"
->
-  Cerrar sesión
-</button>
+      <button
+        style={{ position: "absolute", top: "25px", right: "50px" }}
+        className="py-[10px] px-[20px] text-[#ffffff] bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-50"
+        onClick={handleLogout}
+      >Cerrar sesión</button>
 
 {/* Logo */}
 <div className="w-full flex justify-start ml-6 mt-4 z-10 relative">
