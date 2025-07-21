@@ -7,7 +7,8 @@
 .home h1,
 .login h1,
 .pagina-perfil h1,
-.pagina-test h1{
+.pagina-test h1,
+.pagina-TestCompleto h1{
     font-family: 'Roboto', sans-serif;
     font-size: 6rem;
 }
@@ -107,6 +108,12 @@
 }
 .cajapreguntas{
   margin-left: 100px;
+}
+
+/* -- -- -- -- -- TestCompleto -- -- -- -- -- -- */
+.pagina-TestCompleto p{
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
 }
 
 @media (max-width: 1390px){

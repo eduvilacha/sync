@@ -19,7 +19,7 @@ const TestCompletado = () => {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col items-center justify-center p-6 text-center">
+    <div className="pagina-TestCompleto min-h-screen relative flex flex-col items-center justify-center p-6 text-center">
       {/* Botón cerrar sesión */}
       <button
         style={{ position: "absolute", top: "25px", right: "50px" }}
@@ -30,7 +30,7 @@ const TestCompletado = () => {
       </button>
 
       {/* Logo */}
-      <div className="w-full flex justify-start ml-6 mt-4 z-10 relative">
+      <div className="absolute top-5 left-6">
         <Link to="/principal">
           <img
             src={logo}
@@ -51,8 +51,8 @@ const TestCompletado = () => {
 
         <button
         onClick={() => navigate("/top5")}
-        className="bg-[#0395ff] text-white px-6 py-3 rounded-lg text-lg hover:bg-[#0277cc] transition"
-         > Ver Top 5 </button>
+        className="mt-6 py-[10px] px-[20px] text-[#ffffff] bg-[#0395ff] hover:bg-[#0277cc] border-none rounded transition"
+         > <p>Ver Top 5</p></button>
 
       </div>
 
