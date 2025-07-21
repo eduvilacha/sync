@@ -27,15 +27,14 @@ const TestCompletado = () => {
         onClick={handleLogout}
       >Cerrar sesión</button>
 
-      {/* Logo */}
-      <div className="w-full flex justify-start ml-6 mt-4 z-10 relative">
-        <Link to="/principal">
-          <img
-            src={logo}
-            alt="Logo"
-            className="w-[120px] h-auto cursor-pointer"
-          />
-        </Link>
+      {/* Logo (arriba izquierda) */}
+      <div style={{ position: "absolute", top: "25px", left: "50px" }} className="z-50">
+        <img
+          src={logo}
+          alt="Logo"
+          className="w-[120px] h-auto cursor-pointer"
+          onClick={() => navigate("/principal")}
+        />
       </div>
 
       {/* Mensaje principal */}
