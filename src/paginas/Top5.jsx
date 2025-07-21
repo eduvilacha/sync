@@ -61,13 +61,24 @@ const Top5 = () => {
       {error && <p className="text-red-500 text-center">{error}</p>}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-        {compatibles.map((item, i) => (
-          <div key={i} className="bg-white shadow-md rounded-xl p-6 text-center">
+      {compatibles.map((item, i) => (
+          <div key={i} className="bg-white shadow-md rounded-xl p-6 text-center space-y-3">
             <h2 className="text-xl font-semibold text-[#333]">{item.usuario.nombre}</h2>
             <p className="text-gray-500 text-sm">{item.usuario.provincia}</p>
-            <p className="text-2xl font-bold text-[#0395ff] mt-4">{item.porcentaje}%</p>
+
+            {/* Porcentaje numérico */}
+            <p className="text-lg font-bold text-[#0395ff]">{item.porcentaje}%</p>
+
+            {/* Barra de compatibilidad visual */}
+            <div className="w-full bg-gray-200 rounded-full h-4">
+              <div
+                className="h-4 rounded-full bg-[#0395ff] transition-all duration-500"
+                style={{ width: `${item.porcentaje}%` }}
+              />
+            </div>
           </div>
         ))}
+
       </div>
     </div>
   );
