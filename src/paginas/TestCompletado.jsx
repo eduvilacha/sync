@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import logo from "../img/sync_logo.png";
 import fondo from "../img/sync_fondo_paginas.png";
 
@@ -53,7 +53,7 @@ const TestCompletado = () => {
         onClick={() => navigate("/top5")}
         className="bg-[#0395ff] text-white px-6 py-3 rounded-lg text-lg hover:bg-[#0277cc] transition"
          > Ver Top 5 </button>
-         
+
       </div>
 
       {/* Fondo decorativo */}
