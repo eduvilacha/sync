@@ -8,7 +8,8 @@
 .login h1,
 .pagina-perfil h1,
 .pagina-test h1,
-.pagina-TestCompleto h1{
+.pagina-TestCompleto h1,
+.pagina-top5 h1{
     font-family: 'Roboto', sans-serif;
     font-size: 6rem;
 }
@@ -128,7 +129,10 @@
   font-weight: 500;
 }
 /* -- -- -- -- -- TOP5 -- -- -- -- -- -- */
-
+.pagina-top5 h1{
+  margin-top: 200px;
+  margin-bottom: 100px;
+}
 .circular-chart {
   width: 80px;
   height: 80px;
@@ -184,7 +188,8 @@
   .pagina-perfil h1
   .pagina-principal h1,
   .pagina-test h1,
-  .pagina-TestCompleto h1{
+  .pagina-TestCompleto h1,
+  .pagina-top5 h1{
     font-size: 3.5rem;
 }
 /* -- -- -- -- -- PERFIL -- -- -- -- -- -- */
@@ -214,7 +219,8 @@
   .pagina-perfil h1,
   .pagina-principal h1,
   .pagina-test h1,
-  .pagina-TestCompleto h1{
+  .pagina-TestCompleto h1,
+  .pagina-top5 h1{
     font-size: 3rem;
   }
   .home .botones{

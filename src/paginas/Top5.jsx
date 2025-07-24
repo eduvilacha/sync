@@ -37,7 +37,7 @@ const Top5 = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-white p-8 relative overflow-x-hidden">
+    <div className="pagina-top5 min-h-screen bg-gradient-to-b from-blue-100 to-white p-8 relative overflow-x-hidden">
       {/* Botón cerrar sesión */}
       <button
         style={{ position: "absolute", top: "25px", right: "50px" }}
@@ -58,8 +58,8 @@ const Top5 = () => {
         </Link>
       </div>
   
-      <h1 className="text-3xl font-bold text-center text-[#0395ff] mt-28 mb-8">
-        💘 Tus 5 Compatibilidades Principales
+      <h1 className="text-3xl font-bold text-center text-[#0395ff]">
+        Tus 5 Compatibilidades Principales
       </h1>
   
       {error && <p className="text-red-500 text-center">{error}</p>}
