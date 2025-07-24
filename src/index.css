@@ -100,7 +100,7 @@
 }
 .perfil-boton-regreso{
   font-family: 'Roboto', sans-serif;
-  font-size: 0.5rem;
+  font-size: 0.8rem;
 }
 
 
@@ -152,6 +152,10 @@
   .pagina-principal h1{
     font-size: 3.5rem;
 }
+/* -- -- -- -- -- PERFIL -- -- -- -- -- -- */
+.perfil-cubrir{
+  width: 60%;
+}
 }
   
 @media (max-width: 795px) {
@@ -197,6 +201,7 @@
 /* -- -- -- -- -- PRINCIPAL -- -- -- -- -- -- */
   .principal-menu{
     flex-direction: column;
+    height: 90%;
   }
    /* -- -- -- -- -- PERFIL -- -- -- -- -- -- */
    .miperfil-contenido{
