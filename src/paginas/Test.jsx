@@ -161,7 +161,7 @@ const Test = () => {
     <button
       type="button"
       onClick={() => setPreguntaActual(p => Math.max(p - 1, 0))}
-      className="bg-gray-300 text-black px-4 py-2 rounded disabled:opacity-50"
+      className="bg-[#ceef32] hover:bg-[#b4c952]"
       disabled={preguntaActual === 0}
     >
       <p>Anterior</p>
@@ -172,7 +172,7 @@ const Test = () => {
         type="button"
         onClick={() => setPreguntaActual(p => p + 1)}
         disabled={respuestas[preguntaActual] == null}
-        className="bg-[#0395ff] text-white px-6 py-2 rounded hover:bg-[#0277cc] disabled:opacity-50"
+        className="bg-[#0395ff] hover:bg-[#74b5e4] "
       >
         <p>Siguiente</p>
       </button>
@@ -180,7 +180,7 @@ const Test = () => {
       <button
         type="submit"
         disabled={respuestas.includes(null) || enviando}
-        className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 disabled:opacity-50"
+        className="bg-[#ff78e5] hover:bg-[#d465bf]"
       >
         {enviando ? "Enviando..." : "Enviar respuestas"}
       </button>
