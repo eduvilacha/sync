@@ -116,6 +116,12 @@
 .cajapreguntas{
   margin-left: 100px;
 }
+.pagina-test button p{
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+
+}
 
 /* -- -- -- -- -- TestCompleto -- -- -- -- -- -- */
 .pagina-TestCompleto p{
@@ -149,7 +155,8 @@
 
   .login h1,
   .pagina-perfil h1
-  .pagina-principal h1{
+  .pagina-principal h1,
+  .pagina-test h1{
     font-size: 3.5rem;
 }
 /* -- -- -- -- -- PERFIL -- -- -- -- -- -- */
@@ -177,7 +184,8 @@
   .home h1,
   .login h1,
   .pagina-perfil h1,
-  .pagina-principal h1{
+  .pagina-principal h1,
+  .pagina-test h1{
     font-size: 3rem;
   }
   .home .botones{
@@ -201,7 +209,7 @@
 /* -- -- -- -- -- PRINCIPAL -- -- -- -- -- -- */
   .principal-menu{
     flex-direction: column;
-    height: 80%;
+    height: 70%;
   }
    /* -- -- -- -- -- PERFIL -- -- -- -- -- -- */
    .miperfil-contenido{
@@ -210,4 +218,11 @@
   .perfil-cubrir{
     width: 80%;
   }
+  .cajapreguntas{
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 0px;
+  }
+  
+  
 }

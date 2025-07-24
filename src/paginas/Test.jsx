@@ -164,7 +164,7 @@ const Test = () => {
       className="bg-gray-300 text-black px-4 py-2 rounded disabled:opacity-50"
       disabled={preguntaActual === 0}
     >
-      Anterior
+      <p>Anterior</p>
     </button>
 
     {preguntaActual < preguntas.length - 1 ? (
@@ -174,7 +174,7 @@ const Test = () => {
         disabled={respuestas[preguntaActual] == null}
         className="bg-[#0395ff] text-white px-6 py-2 rounded hover:bg-[#0277cc] disabled:opacity-50"
       >
-        Siguiente
+        <p>Siguiente</p>
       </button>
     ) : (
       <button
