@@ -81,7 +81,7 @@ const Principal = () => {
     <div className="pagina-principal h-screen overflow-hidden relative p-0 m-0">
       {error && <p className="text-red-500 text-center mt-2">{error}</p>}
       <button
-        style={{ position: "absolute", top: "25px", right: "50px" }}
+        style={{ position: "absolute", top: "25px", right: "10px" }}
         className="py-[10px] px-[20px] text-[#ffffff] bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-10"
         onClick={handleLogout}
       >

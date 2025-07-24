@@ -40,8 +40,8 @@ const Top5 = () => {
     <div className="pagina-top5 min-h-screen bg-gradient-to-b from-blue-100 to-white p-8 relative overflow-x-hidden">
       {/* Botón cerrar sesión */}
       <button
-        style={{ position: "absolute", top: "25px", right: "50px" }}
-        className="py-[10px] px-[20px] text-[#ffffff] bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-50"
+        style={{ position: "absolute", top: "25px", right: "10px" }}
+        className="botoncerrarseesion py-[10px] px-[20px] text-[#ffffff] bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-50"
         onClick={handleLogout}
       >
         Cerrar sesión
@@ -100,7 +100,6 @@ const Top5 = () => {
                   fill="none"
                   strokeDasharray={`${(item.porcentaje / 100) * 220},220`}
                   strokeLinecap="round"
-                  transform="rotate(-90 40 40)" 
                 />
               </svg>
               <p className="text-[#0395ff] font-semibold">{item.porcentaje}%</p>
