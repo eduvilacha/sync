@@ -48,7 +48,7 @@ const TestCompletado = () => {
 
         <button
         onClick={() => navigate("/top5")}
-        className="mt-6 py-[10px] px-[20px] text-[#ffffff] bg-[#0395ff] hover:bg-[#0277cc] border-none rounded transition"
+        className="mt-6 py-[30px] px-[10px] text-[#ffffff] bg-[#0395ff] hover:bg-[#0277cc] border-none rounded transition"
          > <p>Ver Top 5</p></button>
 
       </div>
