@@ -37,18 +37,18 @@ const Top5 = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-white p-8 relative">
+    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-white p-8 relative overflow-x-hidden">
       {/* Botón cerrar sesión */}
       <button
         style={{ position: "absolute", top: "25px", right: "50px" }}
-        className="py-[10px] px-[20px] text-white bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-50"
+        className="py-[10px] px-[20px] text-[#ffffff] bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-50"
         onClick={handleLogout}
       >
         Cerrar sesión
       </button>
   
       {/* Logo */}
-      <div className="w-full flex justify-start ml-6 mt-4 z-10 relative">
+      <div className="absolute top-5 left-6 z-10">
         <Link to="/principal">
           <img
             src={logo}
@@ -58,18 +58,18 @@ const Top5 = () => {
         </Link>
       </div>
   
-      <h1 className="text-3xl font-bold text-center text-[#0395ff] mt-20 mb-12">
+      <h1 className="text-3xl font-bold text-center text-[#0395ff] mt-28 mb-8">
         💘 Tus 5 Compatibilidades Principales
       </h1>
   
       {error && <p className="text-red-500 text-center">{error}</p>}
   
-      {/* Caja que alinea horizontalmente los elementos */}
-      <div className="flex justify-center gap-6 overflow-x-auto px-4">
+      {/* Contenedor horizontal */}
+      <div className="flex justify-center flex-wrap gap-6 max-w-5xl mx-auto">
         {compatibles.map((item, i) => (
           <div
             key={i}
-            className="min-w-[200px] bg-white rounded-2xl shadow-md p-6 text-center space-y-3 border-l-4 border-[#0395ff] flex-shrink-0"
+            className="bg-white rounded-2xl shadow-md p-6 text-center space-y-3 w-60 border-l-4 border-[#0395ff]"
           >
             <h2 className="text-lg font-semibold text-[#333]">
               {item.usuario.nombre}
@@ -78,23 +78,38 @@ const Top5 = () => {
               {item.usuario.edad || "Edad no disponible"}
             </p>
   
-            {/* Gráfico circular de compatibilidad */}
-            <div className="relative w-24 h-24 mx-auto">
-              <div
-                className="absolute inset-0 rounded-full"
-                style={{
-                  background: `conic-gradient(#0395ff ${item.porcentaje * 3.6}deg, #e5e7eb 0deg)`,
-                }}
-              ></div>
-              <div className="absolute inset-2 bg-white rounded-full flex items-center justify-center text-[#0395ff] font-bold text-lg">
-                {item.porcentaje}%
-              </div>
+            {/* Gráfico circular */}
+            <div className="flex flex-col items-center space-y-2">
+              <svg className="circular-chart" width="80" height="80">
+                <circle
+                  className="circle-bg"
+                  cx="40"
+                  cy="40"
+                  r="35"
+                  stroke="#e6e6e6"
+                  strokeWidth="10"
+                  fill="none"
+                />
+                <circle
+                  className="circle"
+                  cx="40"
+                  cy="40"
+                  r="35"
+                  stroke="#0395ff"
+                  strokeWidth="10"
+                  fill="none"
+                  strokeDasharray={`${(item.porcentaje / 100) * 220},220`}
+                  strokeLinecap="round"
+                />
+              </svg>
+              <p className="text-[#0395ff] font-semibold">{item.porcentaje}%</p>
             </div>
           </div>
         ))}
       </div>
     </div>
   );
+  
   
 };
 
