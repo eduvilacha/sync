@@ -37,53 +37,65 @@ const Top5 = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-white p-8">
+    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-white p-8 relative">
       {/* Botón cerrar sesión */}
       <button
         style={{ position: "absolute", top: "25px", right: "50px" }}
-        className="py-[10px] px-[20px] text-[#ffffff] bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-50"
+        className="py-[10px] px-[20px] text-white bg-[#ff2d01] hover:bg-[#ff78e5] border-none transition z-50"
         onClick={handleLogout}
-      >Cerrar sesión</button>
-
-{/* Logo */}
-<div className="w-full flex justify-start ml-6 mt-4 z-10 relative">
-  <Link to="/principal">
-    <img
-      src={logo}
-      alt="Logo"
-      className="w-[120px] h-auto cursor-pointer"
-    />
-  </Link>
-</div>
-
-      <h1 className="text-3xl font-bold text-center text-[#0395ff] mb-8">💘 Tus 5 Compatibilidades Principales</h1>
-
+      >
+        Cerrar sesión
+      </button>
+  
+      {/* Logo */}
+      <div className="w-full flex justify-start ml-6 mt-4 z-10 relative">
+        <Link to="/principal">
+          <img
+            src={logo}
+            alt="Logo"
+            className="w-[120px] h-auto cursor-pointer"
+          />
+        </Link>
+      </div>
+  
+      <h1 className="text-3xl font-bold text-center text-[#0395ff] mt-20 mb-12">
+        💘 Tus 5 Compatibilidades Principales
+      </h1>
+  
       {error && <p className="text-red-500 text-center">{error}</p>}
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-      {compatibles.map((item, i) => (
-          <div key={i} className="bg-white shadow-xl rounded-2xl p-6 text-center space-y-4 border-l-4 border-[#0395ff] transition hover:scale-105 duration-300">
-          <h2 className="text-xl font-semibold text-[#333]">{item.usuario.nombre}</h2>
-          <p className="text-gray-500 text-sm">{item.usuario.provincia}</p>
-        
-          {/* Gráfico circular de compatibilidad */}
-          <div className="relative w-24 h-24 mx-auto">
-            <div
-              className="absolute inset-0 rounded-full"
-              style={{
-                background: `conic-gradient(#0395ff ${item.porcentaje * 3.6}deg, #e5e7eb 0deg)`,
-              }}
-            ></div>
-            <div className="absolute inset-2 bg-white rounded-full flex items-center justify-center text-[#0395ff] font-bold text-lg">
-              {item.porcentaje}%
+  
+      {/* Caja que alinea horizontalmente los elementos */}
+      <div className="flex justify-center gap-6 overflow-x-auto px-4">
+        {compatibles.map((item, i) => (
+          <div
+            key={i}
+            className="min-w-[200px] bg-white rounded-2xl shadow-md p-6 text-center space-y-3 border-l-4 border-[#0395ff] flex-shrink-0"
+          >
+            <h2 className="text-lg font-semibold text-[#333]">
+              {item.usuario.nombre}
+            </h2>
+            <p className="text-sm text-gray-500">
+              {item.usuario.edad || "Edad no disponible"}
+            </p>
+  
+            {/* Gráfico circular de compatibilidad */}
+            <div className="relative w-24 h-24 mx-auto">
+              <div
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: `conic-gradient(#0395ff ${item.porcentaje * 3.6}deg, #e5e7eb 0deg)`,
+                }}
+              ></div>
+              <div className="absolute inset-2 bg-white rounded-full flex items-center justify-center text-[#0395ff] font-bold text-lg">
+                {item.porcentaje}%
+              </div>
             </div>
           </div>
-        </div>        
         ))}
-
       </div>
     </div>
   );
+  
 };
 
 export default Top5;
