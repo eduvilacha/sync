@@ -157,7 +157,7 @@ const Test = () => {
   )}
 
   {/* Navegación entre preguntas */}
-  <div className="flex justify-between mt-6">
+  <div className="botones-avanzar flex justify-between mt-6">
     <button
       type="button"
       onClick={() => setPreguntaActual(p => Math.max(p - 1, 0))}
