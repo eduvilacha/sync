@@ -58,7 +58,7 @@ const Top5 = () => {
         </Link>
       </div>
   
-      <h1 className="text-3xl font-bold text-center text-[#0395ff]">
+      <h1 className="text-3xl font-bold text-center">
         Tus 5 Compatibilidades Principales
       </h1>
   
