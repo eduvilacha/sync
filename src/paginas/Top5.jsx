@@ -62,21 +62,23 @@ const Top5 = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
       {compatibles.map((item, i) => (
-          <div key={i} className="bg-white shadow-md rounded-xl p-6 text-center space-y-3">
-            <h2 className="text-xl font-semibold text-[#333]">{item.usuario.nombre}</h2>
-            <p className="text-gray-500 text-sm">{item.usuario.provincia}</p>
-
-            {/* Porcentaje numérico */}
-            <p className="text-lg font-bold text-[#0395ff]">{item.porcentaje}%</p>
-
-            {/* Barra de compatibilidad visual */}
-            <div className="w-full bg-gray-200 rounded-full h-4 overflow-hidden min-w-[100px]">
-              <div
-                className="h-4 rounded-full bg-[#0395ff] transition-all duration-500"
-                style={{ width: `${item.porcentaje}%` }}
-              />
+          <div key={i} className="bg-white shadow-xl rounded-2xl p-6 text-center space-y-4 border-l-4 border-[#0395ff] transition hover:scale-105 duration-300">
+          <h2 className="text-xl font-semibold text-[#333]">{item.usuario.nombre}</h2>
+          <p className="text-gray-500 text-sm">{item.usuario.provincia}</p>
+        
+          {/* Gráfico circular de compatibilidad */}
+          <div className="relative w-24 h-24 mx-auto">
+            <div
+              className="absolute inset-0 rounded-full"
+              style={{
+                background: `conic-gradient(#0395ff ${item.porcentaje * 3.6}deg, #e5e7eb 0deg)`,
+              }}
+            ></div>
+            <div className="absolute inset-2 bg-white rounded-full flex items-center justify-center text-[#0395ff] font-bold text-lg">
+              {item.porcentaje}%
             </div>
           </div>
+        </div>        
         ))}
 
       </div>
