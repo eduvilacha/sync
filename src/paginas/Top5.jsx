@@ -66,7 +66,7 @@ const Top5 = () => {
   
       {/* Contenedor horizontal */}
       <div className="flex justify-center flex-wrap gap-6 max-w-5xl mx-auto">
-        {compatibles.map((item, i) => (
+        {compatibles.filter(item => item.usuario).map((item, i) => (
           <div
             key={i}
             className="bg-white rounded-2xl shadow-md p-6 text-center space-y-3 w-60 border-l-4 border-[#0395ff]"
@@ -100,6 +100,7 @@ const Top5 = () => {
                   fill="none"
                   strokeDasharray={`${(item.porcentaje / 100) * 220},220`}
                   strokeLinecap="round"
+                  transform="rotate(-90 40 40)" 
                 />
               </svg>
               <p className="text-[#0395ff] font-semibold">{item.porcentaje}%</p>
