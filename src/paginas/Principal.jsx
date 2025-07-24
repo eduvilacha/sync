@@ -94,7 +94,7 @@ const Principal = () => {
         <h1 className="font-bold text-center mb-2">¡Hola, {userName}!</h1>
       </div>
 
-      <div className="flex h-[50%] justify-evenly items-center">
+      <div className="principal-menu flex h-[50%] justify-evenly items-center">
         
         <Link to="/test" className="group" style={{ width: "20%" }}>
           <div className="bg-blue-500 text-white rounded-full flex flex-col items-center justify-center w-full h-[120px] transition-transform hover:scale-105">

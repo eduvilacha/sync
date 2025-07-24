@@ -189,7 +189,7 @@ const Perfil = () => {
               name="provincia"
               value={user.provincia}
               onChange={(e) => setUser({ ...user, provincia: e.target.value })}
-              className="w-[40%] h-[40px] border border-gray-300 text-base"
+              className="perfil-cubrir w-[40%] h-[40px] border border-gray-300 text-base"
               required>
               {provincias.map((prov) => (
                 <option key={prov} value={prov}>{prov}</option>
@@ -204,7 +204,7 @@ const Perfil = () => {
               name="contrasena"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className="w-[40%] h-[40px] border border-gray-300 text-base"
+              className="perfil-cubrir w-[40%] h-[40px] border border-gray-300 text-base"
             />
           </div>
           <div>
@@ -214,7 +214,7 @@ const Perfil = () => {
             className="botonactualizar w-[40%] h-[40px] bg-[#0395ff] hover:bg-[#0277cc] font-semibold transition"><p>Actualizar</p></button>
           </div>
           <div>
-            <Link to="/principal" className="text-blue-500 hover:underline mt-6 block text-left text-lg">Volver al inicio</Link>
+            <Link to="/principal" className="perfil-boton-regreso text-blue-500 hover:underline mt-6 block text-left text-lg">Volver al inicio</Link>
           </div>
         </form>
       </div>

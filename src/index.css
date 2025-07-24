@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 
-/* -- -- -- -- -- HOME LOGIN REGISTRO -- -- -- -- -- -- */
+/* -- -- -- -- -- H1 -- -- -- -- -- -- */
 .home h1,
 .login h1,
 .pagina-perfil h1,
@@ -12,6 +12,9 @@
     font-family: 'Roboto', sans-serif;
     font-size: 6rem;
 }
+
+
+/* -- -- -- -- -- HOME LOGIN REGISTRO -- -- -- -- -- -- */
 .home .boton,
 .login .boton{
     font-family: 'Roboto', sans-serif;
@@ -95,6 +98,10 @@
   background-position: center 200%;
   z-index: -1; 
 }
+.perfil-boton-regreso{
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.5rem;
+}
 
 
 /* -------- TEST ---------*/
@@ -140,7 +147,9 @@
       font-size: 4rem;
   }
 
-  .login h1{
+  .login h1,
+  .pagina-perfil h1
+  .pagina-principal h1{
     font-size: 3.5rem;
 }
 }
@@ -162,7 +171,9 @@
     background-image: none;
   }
   .home h1,
-  .login h1{
+  .login h1,
+  .pagina-perfil h1,
+  .pagina-principal h1{
     font-size: 3rem;
   }
   .home .botones{
@@ -182,5 +193,16 @@
   }
   .login .login-text{
     width: 90%;
+  }
+/* -- -- -- -- -- PRINCIPAL -- -- -- -- -- -- */
+  .principal-menu{
+    flex-direction: column;
+  }
+   /* -- -- -- -- -- PERFIL -- -- -- -- -- -- */
+   .miperfil-contenido{
+    margin-left: 50px;
+  }
+  .perfil-cubrir{
+    width: 80%;
   }
 }
