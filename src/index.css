@@ -123,9 +123,8 @@
 
 }
 .pagina-test .botones-avanzar button {
-  margin-top: 20px;
-  padding: 8px 20px;
-  border-radius: 8px;
+  margin-top: 50px;
+  padding: 20px 8px;
   font-weight: 500;
 }
 
@@ -162,7 +161,8 @@
   .login h1,
   .pagina-perfil h1
   .pagina-principal h1,
-  .pagina-test h1{
+  .pagina-test h1,
+  .pagina-TestCompleto h1{
     font-size: 3.5rem;
 }
 /* -- -- -- -- -- PERFIL -- -- -- -- -- -- */
@@ -191,7 +191,8 @@
   .login h1,
   .pagina-perfil h1,
   .pagina-principal h1,
-  .pagina-test h1{
+  .pagina-test h1,
+  .pagina-TestCompleto h1{
     font-size: 3rem;
   }
   .home .botones{
@@ -215,7 +216,7 @@
 /* -- -- -- -- -- PRINCIPAL -- -- -- -- -- -- */
   .principal-menu{
     flex-direction: column;
-    height: 70%;
+    height: 75%;
   }
    /* -- -- -- -- -- PERFIL -- -- -- -- -- -- */
    .miperfil-contenido{
