@@ -38,7 +38,7 @@ const Test = () => {
   
         setUserName(authData.userName);
   
-        // 🚨 Nuevo paso: comprobar si ya ha hecho el test
+        // comprobar si ya ha hecho el test
         const realizadoRes = await fetch("https://servidor-sync.onrender.com/test-realizado", {
           method: "GET",
           credentials: "include",

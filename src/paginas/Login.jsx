@@ -27,17 +27,16 @@ const Login = () => {
       });
 
       console.log("Estado de respuesta /login:", res.status);
-      console.log("Cabeceras de respuesta /login:", res.headers.get("Set-Cookie")); // Nuevo: Log de la cookie
+      console.log("Cabeceras de respuesta /login:", res.headers.get("Set-Cookie"));
       const data = await res.json();
       console.log("Respuesta de /login:", data);
 
       if (res.ok && data.success) {
         console.log("Login exitoso, esperando para verificar sesión...");
       
-        // 🔥 AÑADIR: Esperar 300ms para que el navegador guarde bien la cookie
+        // AÑADIR. Esperar para que el navegador guarde bien la cookie
         await new Promise(resolve => setTimeout(resolve, 300));
       
-        // 🔥 Luego hacer la verificación
         const authCheck = await fetch("https://servidor-sync.onrender.com/check-auth", {
           method: "GET",
           credentials: "include",
@@ -81,7 +80,7 @@ const Login = () => {
             value={usuario}
             onChange={(e) => setUsuario(e.target.value)}
             className="login-text w-[500px] h-[30px] px-4 text-lg border-0 border-b-2 border-white bg-transparent text-white outline-none"
-            required // Nuevo: Hacer el campo obligatorio
+            required 
           />
           <input
             type="password"
@@ -89,7 +88,7 @@ const Login = () => {
             value={contraseña}
             onChange={(e) => setContraseña(e.target.value)}
             className="login-text w-[500px] h-[30px] px-4 text-lg border-0 border-b-2 border-white bg-transparent text-white outline-none mt-[10px]"
-            required // Nuevo: Hacer el campo obligatorio
+            required 
           />
           <button
             type="submit"
